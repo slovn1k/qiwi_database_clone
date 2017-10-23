@@ -1,0 +1,193 @@
+.body {
+    background-color: #262E36;
+    color: white;
+}
+
+#admin_title {
+    padding-top: 12px;
+}
+
+#admin_color {
+    color: red;
+}
+
+#sold {
+    margin-top: 12px;
+    color: #F37402;
+    font-weight: bold;
+}
+
+#xml_generator {
+    padding-top: 12px;
+    padding-left: 5px;
+    color: cornflowerblue;
+    text-decoration: underline;
+}
+
+#xml_generator a:visited {
+    color: darkblue;
+}
+
+.header {
+    width: 85%;
+    min-width: 700px;
+    float: right;
+    margin-bottom: 10px;
+    padding-right: 10px;
+    background-color: #68707B;
+}
+
+.Main {
+    margin: auto;
+    float: right;
+    width: 85%;
+    min-width: 700px;
+    text-align: center;
+}
+
+.Menu {
+    /*float: left;*/
+    /*position: fixed;*/
+    /*width: 15%;*/
+    /*min-width: 150px;*/
+    /*height: 100%;*/
+    background-color: #0A1829;
+    margin-top: 0px;
+    /*text-align: center;*/
+}
+
+.Menu ul {
+    list-style: none;
+}
+
+.Menu li {
+    text-align: left;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.Menu li:hover {
+    background-color: #588E95;
+    border-radius: 20px 20px 20px 20px;
+}
+
+.Menu a {
+    text-decoration: none;
+    color: white;
+}
+
+.Menu a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.special_div {
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 5px 5px 5px 5px;
+    height: auto;
+    text-align: left;
+}
+
+.client_list {
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px auto;
+    width: auto;
+    height: auto;
+}
+
+input {
+    border: 0 black solid;
+    color: white;
+    background: transparent;
+    border-bottom: 1px #0069D9 solid;
+    float: right;
+}
+
+.delete {
+    border-bottom: 1px #C82333 solid;
+}
+
+input:focus {
+    outline-width: 0;
+}
+
+#reg_button {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#reg_title {
+    text-align: center;
+}
+
+#user, #user_s, #user_t {
+    width: 75%;
+}
+
+#hr {
+    /*color: white;*/
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+#login_error {
+    text-align: center;
+}
+
+#login_button {
+    margin-top: 10px;
+    width: 100%;
+}
+
+#exit_button {
+    /*margin-left: 10px;*/
+    margin-top: 5px;
+}
+
+#left_menu {
+    width: 100%;
+}
+
+.menu_items {
+    list-style: none;
+    margin-top: 12px;
+}
+
+.menu_items li {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+#right_menu {
+    float: right;
+}
+
+#separator {
+    color: red;
+    margin-top: 12px;
+}
+
+input[type='radio'] {
+    width: 30px;
+    height: 30px;
+    margin: 0 10px 0 10px;
+}
+
+#deleting {
+    color: #DC3545;
+    font-size: 30px;
+    font-style: italic;
+    text-align: center;
+}
+
+
+#deleting_button {
+    width: 100%;
+}
