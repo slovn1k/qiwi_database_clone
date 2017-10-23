@@ -81,6 +81,57 @@
         <div class="row justify-content-center">
 
             <div class="col-auto">
+
+                <h3 id="add_title">Forma de adaugare</h3>
+
+                <form name="adding_client" action="add_client.php" method="post">
+
+                    <div class="form-group">
+                        <label for="nume">Nume</label>
+                        <input type="text" name="nume" id="nume" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prenume">Preume</label>
+                        <input type="text" name="nume" id="prenume" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="directia">Directia</label>
+<!--                        <select class="form-control">-->
+<!--                            <option selected>Fotopanou</option>-->
+<!--                            <option>Ella</option>-->
+<!--                            <option>Avix</option>-->
+<!--                        </select>-->
+                        <input type="text" name="directia" id="directia" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tel">Telefon</label>
+                        <input type="text" name="tel" id="tel" maxlength="11" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="suma">Suma</label>
+                        <input type="number" name="suma" id="suma" class="form-control">
+                    </div>
+
+                    <br>
+                    <p><input type="submit" style="width: 100%;" class="btn btn-primary" value="Introduce"></p>
+                    <br>
+                    <p><input type="reset" style="width: 100%;" class="btn btn-danger" value="Reseteaza"></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <hr id="form_separator">
+
+        <div class="row justify-content-center">
+
+            <div class="col-auto">
                 <h3>Lista Clienti</h3>
 
                 <?php
@@ -92,8 +143,8 @@
 
                     echo "<form name='editing_client' action='delete_client.php' method='post'>";
 
-                    echo "<label for='id' class='lead'>ID_Personal:&nbsp;</label>";
-                    echo "<input type='text' disabled class='lead' name='id' id='id' value='".$row['id_client']."'>";
+                    echo "<label hidden for='id' class='lead'>ID_Personal:&nbsp;</label>";
+                    echo "<input hidden type='text' disabled class='lead' name='id' id='id' value='".$row['id_client']."'>";
 
                     echo "<br>";
 
@@ -128,53 +179,6 @@
                 }
 
                 ?>
-            </div>
-
-        </div>
-
-        <div class="row justify-content-center">
-
-            <div class="col-auto">
-
-                <form name="adding_client" action="#" method="post">
-
-                    <div class="form-group">
-                        <label for="nume">Nume</label>
-                        <input type="text" name="nume" id="nume" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="prenume">Preume</label>
-                        <input type="text" name="nume" id="prenume" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="directia">Directia</label>
-                        <select class="form-control">
-                            <option selected>Fotopanou</option>
-                            <option>Ella</option>
-                            <option>Avix</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tel">Telefon</label>
-                        <input type="text" name="tel" id="tel" maxlength="11" class="form-control">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="suma">Suma</label>
-                        <input type="number" name="suma" id="suma" class="form-control">
-                    </div>
-
-                    <br><br>
-
-                    <input type="submit" style="width: 100%;" class="btn btn-primary" value="Introduce">
-                    <br><br>
-                    <input type="reset" style="width: 100%;" class="btn btn-danger" value="Reseteaza">
-
-                </form>
-
             </div>
 
         </div>

@@ -187,7 +187,19 @@ input[type='radio'] {
     text-align: center;
 }
 
+#adding {
+    color: dodgerblue;
+}
+
 
 #deleting_button {
     width: 100%;
+}
+
+#form_separator {
+    border-top: 1px solid white;
+}
+
+#add_title {
+    color: #0069D9;
 }
