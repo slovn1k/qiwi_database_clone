@@ -60,8 +60,6 @@
                 <?php include "../access_functionality/menu.php";?>
             </div>
 
-            <span id="separator">|</span>
-
             <div class="col-auto" id="admin_title">
                 Bine ati venit : <?php echo "<span id='admin_color'>".$_POST['user']."</span>";?><?php include "../access_functionality/xml_qiwi_generator.php";?>
             </div>
@@ -84,44 +82,52 @@
 
                 <h3 id="add_title">Forma de adaugare</h3>
 
-                <form name="adding_client" action="add_client.php" method="post">
+                <div id="spoiler" style="display:none">
+                    <form name="adding_client" action="add_client.php" method="post">
 
-                    <div class="form-group">
-                        <label for="nume">Nume</label>
-                        <input type="text" name="nume" id="nume" class="form-control">
-                    </div>
+                        <div class="form-group">
+                            <label for="nume">Nume</label>
+                            <input type="text" name="nume" id="nume" class="form-control">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="prenume">Preume</label>
-                        <input type="text" name="nume" id="prenume" class="form-control">
-                    </div>
+                        <div class="form-group">
+                            <label for="prenume">Preume</label>
+                            <input type="text" name="prenume" id="prenume" class="form-control">
+                        </div>
 
-                    <div class="form-group">
-                        <label for="directia">Directia</label>
-<!--                        <select class="form-control">-->
-<!--                            <option selected>Fotopanou</option>-->
-<!--                            <option>Ella</option>-->
-<!--                            <option>Avix</option>-->
-<!--                        </select>-->
-                        <input type="text" name="directia" id="directia" class="form-control">
-                    </div>
+                        <div class="form-group">
+                            <label for="directia">Directia</label>
+                            <select class="form-control" name="directia">
+                                <option selected name="Fotopanou" value="Fotopanou">Fotopanou</option>
+                                <option name="Ella" value="Ella">Ella</option>
+                                <option name="Avix" value="Avix">Avix</option>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
-                        <label for="tel">Telefon</label>
-                        <input type="text" name="tel" id="tel" maxlength="11" class="form-control">
-                    </div>
+                        <div class="form-group">
+                            <label for="tel">Telefon</label>
 
-                    <div class="form-group">
-                        <label for="suma">Suma</label>
-                        <input type="number" name="suma" id="suma" class="form-control">
-                    </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">+373</span>
+                                <input type="text" name="tel" id="tel" maxlength="11" class="form-control">
+                            </div>
 
-                    <br>
-                    <p><input type="submit" style="width: 100%;" class="btn btn-primary" value="Introduce"></p>
-                    <br>
-                    <p><input type="reset" style="width: 100%;" class="btn btn-danger" value="Reseteaza"></p>
+                        </div>
 
-                </form>
+                        <div class="form-group">
+                            <label for="suma">Suma</label>
+                            <input type="number" name="suma" id="suma" class="form-control">
+                        </div>
+
+                        <br>
+                        <p><input type="submit" style="width: 100%;" class="btn btn-primary" value="Introduce"></p>
+                        <br>
+                        <p><input type="reset" style="width: 100%;" class="btn btn-danger" value="Reseteaza"></p>
+
+                    </form>
+                </div>
+
+                <button style="width: 100%; margin-top: 10px;" title="Apasa pentru a deschide forma de adaugare" class="btn btn-success" type="button" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}">Arata/Ascunde</button>
 
             </div>
 
@@ -164,18 +170,14 @@
                     echo "<br>";
 
                     echo "<label for='tel' class='lead'>Telefon:&nbsp;</label>";
-                    echo "<input type='text' disabled class='lead' name='tel' id='tel' value='".$row['numar_tel']."'>";
+                    echo "<span id='number_prefix'>+373</span><input type='text' disabled class='lead' name='tel' id='tel' value='".$row['numar_tel']."'>";
 
                     echo "<br>";
 
                     echo "<label for='suma' class='lead'>Suma:&nbsp;</label>";
                     echo "<input type='text' disabled class='lead' name='suma' id='suma' value='".$row['suma']."'>";
 
-                    echo "<br>";
-
                     echo "</form>";
-
-                    echo "<br><br>";
                 }
 
                 ?>

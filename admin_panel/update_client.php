@@ -15,8 +15,6 @@
         $id_client = $_POST['id_client'];
     }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -53,23 +51,49 @@
 
     </div>
 
+
     <div class="row justify-content-center">
 
         <div class="col-auto">
 
+            <form name="udating_form" action="update.php" method="post">
+                <?php
 
-            <?php
-            if(isset($id_client)) {
-                $delete = "DELETE FROM client WHERE id_client='$id_client'";
-                $result = $connection->query($delete);
+                $update = "SELECT *FROM client WHERE id_client=".$_POST['id_client'];
+                $result = $connection->query($update);
+                $row = $result->fetch_assoc();
 
-                if($result == true) {
-                    echo "<p id='deleting'>Stergere realizata cu succes!!!</p>";
-                } else {
-                    echo "<p id='deleting'>Erroare la stergere</p>";
-                }
-            }
-            ?>
+                echo "<label for='id'>ID_Client&nbsp;</label>";
+                echo "<input type='text' name='id' id='id' value='".$row['id_client']."'>";
+                echo "<br>";
+
+                echo "<label for='nume'>Nume&nbsp;</label>";
+                echo "<input type='text' name='nume' id='nume' value='".$row['nume']."'>";
+                echo "<br>";
+
+                echo "<label for='prenume'>Prenume&nbsp;</label>";
+                echo "<input type='text' name='prenume' id='prenume' value='".$row['prenume']."'>";
+                echo "<br>";
+
+                echo "<label for='directia'>Directia&nbsp;</label>";
+                echo "<input type='text' name='directia' id='directia' value='".$row['directia']."'>";
+                echo "<br>";
+
+                echo "<label for='tel'>Telefon&nbsp;</label>";
+                echo "<input type='text' name='tel' id='tel' value='".$row['numar_tel']."'>";
+                echo "<br>";
+
+                echo "<label for='suma'>Suma&nbsp;</label>";
+                echo "<input type='text' name='suma' id='suma' value='".$row['suma']."'>";
+
+
+                ?>
+
+                <br>
+
+                <input type="submit" class="btn btn-primary" value="Salveaza schimbarile">
+            </form>
+
         </div>
 
     </div>

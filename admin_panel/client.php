@@ -33,8 +33,6 @@
 
             </div>
 
-            <span id="separator">|</span>
-
             <div class="col-auto" id="admin_title">
                 Bine ati venit : <?php echo "<span id='admin_color'>".$_POST['user']."</span>";?><?php include "../access_functionality/xml_qiwi_generator.php";?>
             </div>
@@ -63,7 +61,7 @@
 
                         while ($row = $delete_result->fetch_assoc()) {
                             echo "<div class='form-group'>";
-                            echo "<label class='lead' for='id_client'>".$row['prenume']."&nbsp;</label>";
+                            echo "<label class='lead' for='id_client'>".$row['nume']."&nbsp;</label>";
                             echo "<input type='radio' name='id_client' id='id_client' value='".$row['id_client']."'>";
                             echo "</div>";
                         }
@@ -73,6 +71,36 @@
                     <input type="submit" class="btn btn-danger" id="deleting_button" value="Sterge client">
 
                 </form>
+            </div>
+
+        </div>
+
+        <br>
+
+        <div class="row justify-content-center">
+
+            <div class="col-auto">
+
+                <form name="update_client" action="update_client.php" method="post">
+
+                    <?php
+
+                        $update = "SELECT *FROM client";
+                        $update_query = $connection->query($update);
+
+                        while($update_row = $update_query->fetch_assoc()) {
+                            echo "<div class='form-group'>";
+                            echo "<label class='lead' for='id_client'>".$update_row['nume']."&nbsp;</label>";
+                            echo "<input type='radio' name='id_client' id='id_client' value='".$update_row['id_client']."'>";
+                            echo "</div>";
+                        }
+
+                    ?>
+
+                    <input type="submit" class="btn btn-primary" id="updating_button" value="Editeaza datele">
+
+                </form>
+
             </div>
 
         </div>

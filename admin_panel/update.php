@@ -33,8 +33,6 @@
             <?php include "../access_functionality/menu.php";?>
         </div>
 
-        <span id="separator">|</span>
-
         <div class="col-auto" id="admin_title">
             Bine ati venit : <?php echo "<span id='admin_color'>".$_POST['user']."</span>";?><?php include "../access_functionality/xml_qiwi_generator.php";?>
         </div>
@@ -57,20 +55,27 @@
 
             <?php
 
-                if(isset($_POST['nume'])) {
+            if(isset($_POST['id'])) {
 
-                    $add = "INSERT INTO client (nume, prenume, directia, numar_tel, suma) VALUES ('".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['directia']."', '".$_POST['tel']."', '".$_POST['suma']."')";
-                    $add_result = $connection->query($add);
+                $id = $_POST['id'];
+                $nume = $_POST['nume'];
+                $prenume = $_POST['prenume'];
+                $directia = $_POST['directia'];
+                $tel = $_POST['tel'];
+                $suma = $_POST['suma'];
 
-                    if($add_result == true) {
-                        echo "<p id='adding'>Adaugarea realizata cu succes!!!</p>";
-                    } else {
-                        echo "<p id='adding'>Erroare la adaugare!!!</p>".$connection->error;
-                    }
+                $update = "UPDATE client SET nume='$nume', prenume='$prenume', directia='$directia', numar_tel='$tel', suma='$suma' WHERE id_client='$id'";
+                $update_result = $connection->query($update);
 
+                if($update_result == true) {
+                    echo "<p id='adding'>Salvarea datelor a fost realizata cu succes!!!</p>";
                 } else {
-                    echo "Nu sunt variabile!!!";
+                    echo "<p id='adding'>Erroare la editare!!!</p>".$connection->error;
                 }
+
+            } else {
+                echo "Nu sunt variabile!!!";
+            }
 
             ?>
 

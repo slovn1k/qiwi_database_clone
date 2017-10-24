@@ -189,10 +189,17 @@ input[type='radio'] {
 
 #adding {
     color: dodgerblue;
+    font-size: 30px;
+    font-style: italic;
+    text-align: center;
 }
 
 
 #deleting_button {
+    width: 100%;
+}
+
+#updating_button {
     width: 100%;
 }
 
@@ -202,4 +209,9 @@ input[type='radio'] {
 
 #add_title {
     color: #0069D9;
+}
+
+#number_prefix {
+    color: #0069D9;
+    padding-right: 5px;
 }
