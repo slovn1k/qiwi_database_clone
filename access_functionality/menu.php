@@ -9,7 +9,7 @@
 
                 <li><a href='client.php'>Clienti</a></li>
 
-                <li><a href='#'>Raport</a></li>
+                <li><a target='_blank' href='../admin_panel/generate_raport.php'>Raport</a></li>
 
                 <li><a href='#'>Utilizatori</a></li>
 

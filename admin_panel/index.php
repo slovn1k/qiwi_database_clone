@@ -108,7 +108,7 @@
                             <label for="tel">Telefon</label>
 
                             <div class="input-group">
-                                <span class="input-group-addon">+373</span>
+                                <span class="input-group-addon">(+373)/0</span>
                                 <input type="text" name="tel" id="tel" maxlength="11" class="form-control">
                             </div>
 
@@ -170,7 +170,7 @@
                     echo "<br>";
 
                     echo "<label for='tel' class='lead'>Telefon:&nbsp;</label>";
-                    echo "<span id='number_prefix'>+373</span><input type='text' disabled class='lead' name='tel' id='tel' value='".$row['numar_tel']."'>";
+                    echo "<span id='number_prefix'>(+373)/0</span><input type='text' disabled class='lead' name='tel' id='tel' value='".$row['numar_tel']."'>";
 
                     echo "<br>";
 
