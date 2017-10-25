@@ -138,7 +138,15 @@
         <div class="row justify-content-center">
 
             <div class="col-auto">
-                <h4>Lista Clienti</h4>
+
+                <?php
+
+                    $count_user = "SELECT COUNT(id_client) c FROM client";
+                    $count_result = $connection->query($count_user);
+                    $count = $count_result->fetch_assoc();
+
+                ?>
+                <h4>Lista Clienti/Numarul de clienti: <?php printf($count['c']); ?></h4>
 
                 <?php
 
