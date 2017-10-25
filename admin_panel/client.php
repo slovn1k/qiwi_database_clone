@@ -56,12 +56,12 @@
 
                         <?php
 
-                        $delete = "SELECT *FROM client";
+                        $delete = "SELECT *FROM client ORDER BY nume";
                         $delete_result = $connection->query($delete);
 
                         while ($row = $delete_result->fetch_assoc()) {
                             echo "<div class='form-group'>";
-                            echo "<label class='lead' for='id_client'>".$row['nume']."&nbsp;</label>";
+                            echo "<label for='id_client'>".$row['nume']."&nbsp;</label>";
                             echo "<input type='radio' name='id_client' id='id_client' value='".$row['id_client']."'>";
                             echo "</div>";
                         }
@@ -76,6 +76,7 @@
         </div>
 
         <br>
+        <hr id="form_separator">
 
         <div class="row justify-content-center">
 
@@ -85,12 +86,12 @@
 
                     <?php
 
-                        $update = "SELECT *FROM client";
+                        $update = "SELECT *FROM client ORDER BY nume";
                         $update_query = $connection->query($update);
 
                         while($update_row = $update_query->fetch_assoc()) {
                             echo "<div class='form-group'>";
-                            echo "<label class='lead' for='id_client'>".$update_row['nume']."&nbsp;</label>";
+                            echo "<label for='id_client'>".$update_row['nume']."&nbsp;</label>";
                             echo "<input type='radio' name='id_client' id='id_client' value='".$update_row['id_client']."'>";
                             echo "</div>";
                         }

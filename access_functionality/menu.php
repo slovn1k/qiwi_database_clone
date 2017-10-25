@@ -11,7 +11,7 @@
 
                 <li><a target='_blank' href='../admin_panel/generate_raport.php'>Raport</a></li>
 
-                <li><a href='#'>Utilizatori</a></li>
+                <li><a href='../admin_panel/user.php'>Utilizatori</a></li>
 
             </ul>";
     } else {

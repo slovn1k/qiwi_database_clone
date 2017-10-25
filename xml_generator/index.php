@@ -11,7 +11,7 @@ if($connection->connect_error) {
     die("Erroarea la conexiune cu baza de date: ".$connection->connect_error);
 }
 
-$sql = "SELECT *FROM client";
+$sql = "SELECT *FROM client ORDER BY nume";
 $res = $connection->query($sql);
 
 $xml = new XMLWriter();
@@ -32,7 +32,7 @@ while ($row = $res->fetch_assoc()) {
     $xml->endElement();
 
     $xml->startElement("prv_txn");
-    $xml->writeRaw($row['prenume']);
+    $xml->writeRaw($row['nume']);
     $xml->endElement();
 
     $xml->startElement("sum");

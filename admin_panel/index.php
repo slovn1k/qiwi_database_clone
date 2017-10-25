@@ -86,7 +86,7 @@
                     <form name="adding_client" action="add_client.php" method="post">
 
                         <div class="form-group">
-                            <label for="nume">Nume</label>
+                            <label for="nume">Nume<span id="required"> *</span></label>
                             <input type="text" name="nume" id="nume" class="form-control">
                         </div>
 
@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="directia">Directia</label>
+                            <label for="directia">Directia<span id="required"> *</span></label>
                             <select class="form-control" name="directia">
                                 <option selected name="Fotopanou" value="Fotopanou">Fotopanou</option>
                                 <option name="Ella" value="Ella">Ella</option>
@@ -105,7 +105,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="tel">Telefon</label>
+                            <label for="tel">Telefon<span id="required"> *</span></label>
 
                             <div class="input-group">
                                 <span class="input-group-addon">(+373)/0</span>
@@ -115,7 +115,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="suma">Suma</label>
+                            <label for="suma">Suma<span id="required"> *</span></label>
                             <input type="number" name="suma" id="suma" class="form-control">
                         </div>
 
@@ -138,44 +138,44 @@
         <div class="row justify-content-center">
 
             <div class="col-auto">
-                <h3>Lista Clienti</h3>
+                <h4>Lista Clienti</h4>
 
                 <?php
 
-                $query = "SELECT *FROM client";
+                $query = "SELECT *FROM client ORDER BY nume";
                 $result = $connection->query($query);
 
                 while ($row = $result->fetch_assoc()) {
 
                     echo "<form name='editing_client' action='delete_client.php' method='post'>";
 
-                    echo "<label hidden for='id' class='lead'>ID_Personal:&nbsp;</label>";
-                    echo "<input hidden type='text' disabled class='lead' name='id' id='id' value='".$row['id_client']."'>";
+                    echo "<label hidden for='id'>ID_Personal:&nbsp;</label>";
+                    echo "<input hidden type='text' disabled name='id' id='id' value='".$row['id_client']."'>";
 
                     echo "<br>";
 
-                    echo "<label for='nume' class='lead'>Client:&nbsp;</label>";
-                    echo "<input type='text' disabled class='lead' name='nume' id='nume' value='".$row['nume']."'>";
+                    echo "<label for='nume'>Client:&nbsp;</label>";
+                    echo "<input type='text' disabled name='nume' id='nume' value='".$row['nume']."'>";
 
                     echo "<br>";
 
-                    echo "<label for='prenume' class='lead'>Prenume:&nbsp;</label>";
-                    echo "<input type='text' disabled class='lead' name='prenume' id='prenume' value='".$row['prenume']."'>";
+                    echo "<label for='prenume'>Prenume:&nbsp;</label>";
+                    echo "<input type='text' disabled name='prenume' id='prenume' value='".$row['prenume']."'>";
 
                     echo "<br>";
 
-                    echo "<label for='directia' class='lead'>Directia:&nbsp;</label>";
-                    echo "<input type='text' disabled class='lead' name='directia' id='directia' value='".$row['directia']."'>";
+                    echo "<label for='directia'>Directia:&nbsp;</label>";
+                    echo "<input type='text' disabled' name='directia' id='directia' value='".$row['directia']."'>";
 
                     echo "<br>";
 
-                    echo "<label for='tel' class='lead'>Telefon:&nbsp;</label>";
-                    echo "<span id='number_prefix'>(+373)/0</span><input type='text' disabled class='lead' name='tel' id='tel' value='".$row['numar_tel']."'>";
+                    echo "<label for='tel'>Telefon:&nbsp;</label>";
+                    echo "<span id='number_prefix'>(+373)/0</span><input type='text' disabled name='tel' id='tel' value='".$row['numar_tel']."'>";
 
                     echo "<br>";
 
-                    echo "<label for='suma' class='lead'>Suma:&nbsp;</label>";
-                    echo "<input type='text' disabled class='lead' name='suma' id='suma' value='".$row['suma']."'>";
+                    echo "<label for='suma'>Suma:&nbsp;</label>";
+                    echo "<input type='text' disabled name='suma' id='suma' value='".$row['suma']."'>";
 
                     echo "</form>";
                 }

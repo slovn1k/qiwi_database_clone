@@ -3,10 +3,10 @@
 include "../db.php";
 require('../fpdf/fpdf.php');
 
-$pdf_query = "SELECT *FROM client";
+$pdf_query = "SELECT *FROM client ORDER BY nume";
 $pdf_result = $connection->query($pdf_query);
 
-$pdf_query2 = "SELECT *FROM users";
+$pdf_query2 = "SELECT *FROM users ORDER BY user";
 $pdf_result2 = $connection->query($pdf_query2);
 
 
