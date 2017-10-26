@@ -43,7 +43,7 @@
 
             <div class="col-auto">
                 <form action="exit.php" name="logout_form" method="post">
-                    <input type="submit" class="btn btn-warning" id="exit_button" value="Iesire">
+                    <input type="submit" class="btn btn-outline-warning" id="exit_button" value="Iesire">
                 </form>
             </div>
 
@@ -67,7 +67,7 @@
 
             ?>
 
-            <input type="submit" class="btn btn-primary" value="Editeaza">
+            <input type="submit" class="btn btn-outline-primary" value="Editeaza">
 
             </form>
 

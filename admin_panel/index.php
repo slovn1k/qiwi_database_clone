@@ -70,7 +70,7 @@
 
             <div class="col-auto">
                 <form action="exit.php" name="logout_form" method="post">
-                    <input type="submit" class="btn btn-warning" id="exit_button" value="Iesire">
+                    <input type="submit" class="btn btn-outline-warning" id="exit_button" value="Iesire">
                 </form>
             </div>
 
@@ -119,10 +119,15 @@
                             <input type="number" name="suma" id="suma" class="form-control">
                         </div>
 
+                        <div class="form-group">
+                            <label for="data">Data<span id="required"> *</span></label>
+                            <input type="date" name="data" id="data" class="form-control">
+                        </div>
+
                         <br>
-                        <p><input type="submit" style="width: 100%;" class="btn btn-primary" value="Introduce"></p>
+                        <p><input type="submit" style="width: 100%; margin: 5px 0 5px 0;" class="btn btn-outline-primary" value="Introduce"></p>
                         <br>
-                        <p><input type="reset" style="width: 100%;" class="btn btn-danger" value="Reseteaza"></p>
+                        <p><input type="reset" style="width: 100%;" class="btn btn-outline-danger" value="Reseteaza"></p>
 
                     </form>
                 </div>
@@ -135,18 +140,16 @@
 
         <hr id="form_separator">
 
+        <?php
+
+        $count_user = "SELECT COUNT(id_client) c FROM client";
+        $count_result = $connection->query($count_user);
+        $count = $count_result->fetch_assoc();
+
+        ?>
+        <h4 id="lista_clienti">Lista Clienti/Numarul de clienti: <?php printf($count['c']); ?></h4>
+
         <div class="row justify-content-center">
-
-            <div class="col-auto">
-
-                <?php
-
-                    $count_user = "SELECT COUNT(id_client) c FROM client";
-                    $count_result = $connection->query($count_user);
-                    $count = $count_result->fetch_assoc();
-
-                ?>
-                <h4>Lista Clienti/Numarul de clienti: <?php printf($count['c']); ?></h4>
 
                 <?php
 
@@ -155,41 +158,51 @@
 
                 while ($row = $result->fetch_assoc()) {
 
-                    echo "<form name='editing_client' action='delete_client.php' method='post'>";
+                    echo "<div class='col-ld-3 col-sm-3'>";
 
-                    echo "<label hidden for='id'>ID_Personal:&nbsp;</label>";
-                    echo "<input hidden type='text' disabled name='id' id='id' value='".$row['id_client']."'>";
+                        echo "<form name='editing_client' action='delete_client.php' method='post'>";
 
-                    echo "<br>";
+                        echo "<label hidden for='id'>ID_Personal:&nbsp;</label>";
+                        echo "<input hidden type='text' disabled name='id' id='id' value='".$row['id_client']."'>";
 
-                    echo "<label for='nume'>Client:&nbsp;</label>";
-                    echo "<input type='text' disabled name='nume' id='nume' value='".$row['nume']."'>";
+                        echo "<br>";
 
-                    echo "<br>";
+                        echo "<label for='nume'>Client:&nbsp;</label>";
+                        echo "<input type='text' required disabled name='nume' id='nume' value='".$row['nume']."'>";
 
-                    echo "<label for='prenume'>Prenume:&nbsp;</label>";
-                    echo "<input type='text' disabled name='prenume' id='prenume' value='".$row['prenume']."'>";
+                        echo "<br>";
 
-                    echo "<br>";
+                        echo "<label for='prenume'>Prenume:&nbsp;</label>";
+                        echo "<input type='text' disabled name='prenume' id='prenume' value='".$row['prenume']."'>";
 
-                    echo "<label for='directia'>Directia:&nbsp;</label>";
-                    echo "<input type='text' disabled' name='directia' id='directia' value='".$row['directia']."'>";
+                        echo "<br>";
 
-                    echo "<br>";
+                        echo "<label for='directia'>Directia:&nbsp;</label>";
+                        echo "<input type='text' disabled required name='directia' id='directia' value='".$row['directia']."'>";
 
-                    echo "<label for='tel'>Telefon:&nbsp;</label>";
-                    echo "<span id='number_prefix'>(+373)/0</span><input type='text' disabled name='tel' id='tel' value='".$row['numar_tel']."'>";
+                        echo "<br>";
 
-                    echo "<br>";
+                        echo "<label for='tel'>Telefon:&nbsp;</label>";
+                        echo "<span id='number_prefix'>(+373)/0</span><input type='text' required disabled name='tel' id='tel' value='".$row['numar_tel']."'>";
 
-                    echo "<label for='suma'>Suma:&nbsp;</label>";
-                    echo "<input type='text' disabled name='suma' id='suma' value='".$row['suma']."'>";
+                        echo "<br>";
 
-                    echo "</form>";
+                        echo "<label for='suma'>Suma:&nbsp;</label>";
+                        echo "<input type='text' required disabled name='suma' id='suma' value='".$row['suma']."'>";
+
+                        echo "<br>";
+
+                        echo "<label for='data'>Data:</label>";
+                        echo "<input type='date' required disabled name='data' id='data' value='".$row['data']."'>";
+
+                        echo "</form>";
+
+                        echo "<hr id='form_separator'>";
+
+                    echo "</div>";
                 }
 
                 ?>
-            </div>
 
         </div>
 

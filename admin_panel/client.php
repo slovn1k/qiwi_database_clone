@@ -43,7 +43,7 @@
 
             <div class="col-auto">
                 <form action="exit.php" name="logout_form" method="post">
-                    <input type="submit" class="btn btn-warning" id="exit_button" value="Iesire">
+                    <input type="submit" class="btn btn-outline-warning" id="exit_button" value="Iesire">
                 </form>
             </div>
 
@@ -68,7 +68,7 @@
 
                         ?>
 
-                    <input type="submit" class="btn btn-danger" id="deleting_button" value="Sterge client">
+                    <input type="submit" class="btn btn-outline-danger" id="deleting_button" value="Sterge client">
 
                 </form>
             </div>
@@ -98,7 +98,7 @@
 
                     ?>
 
-                    <input type="submit" class="btn btn-primary" id="updating_button" value="Editeaza datele">
+                    <input type="submit" class="btn btn-outline-primary" id="updating_button" value="Editeaza datele">
 
                 </form>
 

@@ -219,3 +219,12 @@ input[type='radio'] {
 #required {
     color: red;
 }
+
+#error_message {
+    color: red;
+    font-size: 25px;
+}
+
+#lista_clienti {
+    text-align: center;
+}

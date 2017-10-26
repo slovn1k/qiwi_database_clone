@@ -45,7 +45,7 @@
 
         <div class="col-auto">
             <form action="exit.php" name="logout_form" method="post">
-                <input type="submit" class="btn btn-warning" id="exit_button" value="Iesire">
+                <input type="submit" class="btn btn-outline-warning" id="exit_button" value="Iesire">
             </form>
         </div>
 
@@ -85,13 +85,17 @@
 
                 echo "<label for='suma'>Suma&nbsp;</label>";
                 echo "<input type='text' name='suma' id='suma' value='".$row['suma']."'>";
+                echo "<br>";
+
+                echo "<label for='data'>Data&nbsp;</label>";
+                echo "<input type='date' name='data' id='data' value='".$row['data']."'>";
 
 
                 ?>
 
                 <br>
 
-                <input type="submit" class="btn btn-primary" value="Salveaza schimbarile">
+                <input type="submit" class="btn btn-outline-primary" value="Salveaza schimbarile">
             </form>
 
         </div>

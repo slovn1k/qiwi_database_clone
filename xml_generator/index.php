@@ -36,7 +36,7 @@ while ($row = $res->fetch_assoc()) {
     $xml->endElement();
 
     $xml->startElement("sum");
-    $xml->writeRaw($row['directia']);
+    $xml->writeRaw($row['suma']);
     $xml->endElement();
 
     $xml->startElement("ccy");
@@ -55,7 +55,7 @@ while ($row = $res->fetch_assoc()) {
 
     $xml->startElement("field");
     $xml->writeAttribute("name", "prv_date");
-    $xml->writeRaw($row["suma"]);
+    $xml->writeRaw($row["data"]);
     $xml->fullEndElement();
 
     $xml->endElement();

@@ -57,19 +57,23 @@
 
             <?php
 
-                if(isset($_POST['nume'])) {
-
-                    $add = "INSERT INTO client (nume, prenume, directia, numar_tel, suma) VALUES ('".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['directia']."', '".$_POST['tel']."', '".$_POST['suma']."')";
-                    $add_result = $connection->query($add);
-
-                    if($add_result == true) {
-                        echo "<p id='adding'>Adaugarea realizata cu succes!!!</p>";
-                    } else {
-                        echo "<p id='adding'>Erroare la adaugare!!!</p>".$connection->error;
-                    }
-
+                if($_POST['nume'] === "" || $_POST['directia'] === "" || $_POST['tel'] === "" || $_POST['suma'] === "" || $_POST['data'] === "") {
+                    echo "<span id='error_message'>Sunteti obligat sa introduceti datele in chinpuri care contin steluta rosie!!!</span>";
                 } else {
-                    echo "Nu sunt variabile!!!";
+                    if(isset($_POST['nume'])) {
+
+                        $add = "INSERT INTO client (nume, prenume, directia, numar_tel, suma, data) VALUES ('".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['directia']."', '".$_POST['tel']."', '".$_POST['suma']."', '".$_POST['data']."')";
+                        $add_result = $connection->query($add);
+
+                        if($add_result == true) {
+                            echo "<p id='adding'>Adaugarea realizata cu succes!!!</p>";
+                        } else {
+                            echo "<p id='adding'>Erroare la adaugare!!!</p>".$connection->error;
+                        }
+
+                    } else {
+                        echo "Nu sunt variabile!!!";
+                    }
                 }
 
             ?>
