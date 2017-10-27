@@ -23,7 +23,7 @@
     <title>Qiwi Client Database</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
 </head>
 <body class="body">
 
@@ -87,8 +87,12 @@
                 echo "<input type='text' name='suma' id='suma' value='".$row['suma']."'>";
                 echo "<br>";
 
+                echo "<label for='comentariu'>Comentariu&nbsp;</label>";
+                echo "<textarea class='form-control' name='comentariu' id='comentariu'>".$row['commentariu']."</textarea>";
+                echo "<br>";
+
                 echo "<label for='data'>Data&nbsp;</label>";
-                echo "<input type='date' name='data' id='data' value='".$row['data']."'>";
+                echo "<input type='datetime-local' name='data' id='data' value='".$row['data']."'>";
 
 
                 ?>

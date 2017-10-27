@@ -20,7 +20,7 @@
     <title>Bune venit pe panela de administrare</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
     <script type="text/javascript" src="../jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body class="body">
@@ -62,7 +62,7 @@
                 } else {
                     if(isset($_POST['nume'])) {
 
-                        $add = "INSERT INTO client (nume, prenume, directia, numar_tel, suma, data) VALUES ('".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['directia']."', '".$_POST['tel']."', '".$_POST['suma']."', '".$_POST['data']."')";
+                        $add = "INSERT INTO client (nume, prenume, directia, numar_tel, suma, data, commentariu) VALUES ('".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['directia']."', '".$_POST['tel']."', '".$_POST['suma']."', '".$_POST['data']."', '".$_POST['comentariu']."')";
                         $add_result = $connection->query($add);
 
                         if($add_result == true) {

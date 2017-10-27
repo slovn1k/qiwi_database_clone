@@ -32,7 +32,7 @@ while ($row = $res->fetch_assoc()) {
     $xml->endElement();
 
     $xml->startElement("prv_txn");
-    $xml->writeRaw($row['nume']);
+    $xml->writeRaw($row['numar_tel']);
     $xml->endElement();
 
     $xml->startElement("sum");
@@ -40,15 +40,15 @@ while ($row = $res->fetch_assoc()) {
     $xml->endElement();
 
     $xml->startElement("ccy");
-    $xml->writeRaw($row['numar_tel']);
+    $xml->writeRaw("MDL");
     $xml->endElement();
 
     $xml->startElement("result");
-    $xml->writeRaw($row['suma']);
+    $xml->writeRaw("0");
     $xml->endElement();
 
     $xml->startElement("comment");
-    $xml->writeRaw($row['suma']);
+    $xml->writeRaw($row['commentariu']);
     $xml->endElement();
 
     $xml->startElement("fields");

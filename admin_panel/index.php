@@ -20,7 +20,7 @@
         <title>Bune venit pe panela de administrare</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="../style/style.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
         <script type="text/javascript" src="../jquery/jquery-3.2.1.min.js"></script>
     </head>
     <body class="body">
@@ -120,8 +120,13 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="comentariu">Comentariu<span id="required"> *</span></label>
+                            <textarea name="comentariu" id="comentariu" class="form-control"></textarea>
+                        </div>
+
+                        <div class="form-group">
                             <label for="data">Data<span id="required"> *</span></label>
-                            <input type="date" name="data" id="data" class="form-control">
+                            <input type="datetime-local" name="data" id="data" class="form-control">
                         </div>
 
                         <br>
@@ -192,8 +197,13 @@
 
                         echo "<br>";
 
+                        echo "<label for='comentariu'>Comentariu:&nbsp;</label>";
+                        echo "<textarea class='form-control' required disabled name='comentariu' id='comentariu'>".$row['commentariu']."</textarea>";
+
+                        echo "<br>";
+
                         echo "<label for='data'>Data:</label>";
-                        echo "<input type='date' required disabled name='data' id='data' value='".$row['data']."'>";
+                        echo "<input type='text' required disabled name='data' id='data' value='".$row['data']."'>";
 
                         echo "</form>";
 

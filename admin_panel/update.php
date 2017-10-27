@@ -20,7 +20,7 @@
     <title>Bune venit pe panela de administrare</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../style/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
     <script type="text/javascript" src="../jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body class="body">
@@ -63,9 +63,10 @@
                 $directia = $_POST['directia'];
                 $tel = $_POST['tel'];
                 $suma = $_POST['suma'];
+                $comentariu = $_POST['comentariu'];
                 $data = $_POST['data'];
 
-                $update = "UPDATE client SET nume='$nume', prenume='$prenume', directia='$directia', numar_tel='$tel', suma='$suma', data='$data' WHERE id_client='$id'";
+                $update = "UPDATE client SET nume='$nume', prenume='$prenume', directia='$directia', numar_tel='$tel', suma='$suma', data='$data', commentariu='$comentariu' WHERE id_client='$id'";
                 $update_result = $connection->query($update);
 
                 if($update_result == true) {
