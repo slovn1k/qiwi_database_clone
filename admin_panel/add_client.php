@@ -62,7 +62,15 @@
                 } else {
                     if(isset($_POST['nume'])) {
 
-                        $add = "INSERT INTO client (nume, prenume, directia, numar_tel, suma, data, commentariu) VALUES ('".$_POST['nume']."', '".$_POST['prenume']."', '".$_POST['directia']."', '".$_POST['tel']."', '".$_POST['suma']."', '".$_POST['data']."', '".$_POST['comentariu']."')";
+                        $nume = trim($_POST['nume']);
+                        $prenume = trim($_POST['prenume']);
+                        $directia = $_POST['directia'];
+                        $tel = trim($_POST['tel']);
+                        $suma = trim($_POST['suma']);
+                        $data = $_POST['data'];
+                        $commentariu = $_POST['comentariu'];
+
+                        $add = "INSERT INTO client (nume, prenume, directia, numar_tel, suma, data, commentariu) VALUES ('".$nume."', '".$prenume."', '".$directia."', '".$tel."', '".$suma."', '".$data."', '".$commentariu."')";
                         $add_result = $connection->query($add);
 
                         if($add_result == true) {

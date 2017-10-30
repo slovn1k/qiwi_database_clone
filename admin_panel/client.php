@@ -52,6 +52,20 @@
         <div class="row justify-content-center">
 
             <div class="col-auto">
+
+                <?php
+
+                    require "../access_functionality/search.php";
+
+                ?>
+
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+
+            <div class="col-auto">
                 <form name="delete_client" action="delete_client.php" method="post">
 
                         <?php

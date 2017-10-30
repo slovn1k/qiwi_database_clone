@@ -58,11 +58,11 @@
             if(isset($_POST['id'])) {
 
                 $id = $_POST['id'];
-                $nume = $_POST['nume'];
-                $prenume = $_POST['prenume'];
+                $nume = trim($_POST['nume']);
+                $prenume = trim($_POST['prenume']);
                 $directia = $_POST['directia'];
-                $tel = $_POST['tel'];
-                $suma = $_POST['suma'];
+                $tel = trim($_POST['tel']);
+                $suma = trim($_POST['suma']);
                 $comentariu = $_POST['comentariu'];
                 $data = $_POST['data'];
 

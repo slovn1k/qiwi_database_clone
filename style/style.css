@@ -228,3 +228,15 @@ input[type='radio'] {
 #lista_clienti {
     text-align: center;
 }
+
+#searching_string {
+    margin-bottom: 10px;
+}
+
+#searching_button {
+    margin-bottom: 10px;
+}
+
+#searching_result {
+    margin-bottom: 10px;
+}

@@ -20,19 +20,22 @@ $xml->openURI("php://output");
 $xml->startDocument();
 $xml->setIndent(true);
 
-$xml->startElement('response');
-
+$xml->startElement('document');
 
 while ($row = $res->fetch_assoc()) {
 
     $xml->startElement("response");
 
     $xml->startElement("osmp_txn_id");
-    $xml->writeRaw($row["id_client"]);
+    $xml->writeRaw($row["numar_tel"]);
     $xml->endElement();
 
     $xml->startElement("prv_txn");
-    $xml->writeRaw($row['numar_tel']);
+    $xml->writeRaw($row['id_client']);
+    $xml->endElement();
+
+    $xml->startElement("service");
+    $xml->writeRaw($row['directia']);
     $xml->endElement();
 
     $xml->startElement("sum");
