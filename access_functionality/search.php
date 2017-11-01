@@ -13,12 +13,14 @@
 
 <?php
 
+    require "../db.php";
     $nume = "";
-    $query = "SELECT nume FROM client";
+    $query = "SELECT *FROM client";
     $result_query = $connection->query($query);
 
     while ($row = $result_query->fetch_assoc()) {
         $nume = $row['nume'];
+        $nume_count = mysqli_num_rows($result_query);
 
         if(isset($_POST['searching_string'])) {
             if($_POST['searching_string'] === $nume) {
