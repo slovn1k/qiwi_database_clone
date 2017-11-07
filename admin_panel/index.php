@@ -152,13 +152,13 @@
         $count = $count_result->fetch_assoc();
 
         ?>
-        <h4 id="lista_clienti">Lista Clienti/Numarul de clienti: <?php printf($count['c']); ?></h4>
+        <h4 id="lista_clienti">Lista Clienti(Spre Achitare)/Numarul de clienti TOTAL: <?php printf($count['c']); ?></h4>
 
         <div class="row justify-content-center">
 
                 <?php
 
-                $query = "SELECT *FROM client ORDER BY nume";
+                $query = "SELECT *FROM client WHERE client.commentariu = 'Spre Achitare' ORDER BY nume";
                 $result = $connection->query($query);
 
                 while ($row = $result->fetch_assoc()) {
@@ -213,6 +213,70 @@
                 }
 
                 ?>
+
+        </div>
+
+        <h4 id="lista_clienti_achitat">Lista Clienti(Achitat)</h4>
+
+        <div class="row justify-content-center">
+
+            <?php
+
+            $query = "SELECT *FROM client WHERE client.commentariu = 'Achitat' ORDER BY nume";
+            $result = $connection->query($query);
+
+            while ($row = $result->fetch_assoc()) {
+
+                echo "<div class='col-ld-3 col-sm-3'>";
+
+                echo "<form name='editing_client' action='delete_client.php' method='post'>";
+
+                echo "<label hidden for='id'>ID_Personal:&nbsp;</label>";
+                echo "<input hidden type='text' disabled name='id' id='id' value='".$row['id_client']."'>";
+
+                echo "<br>";
+
+                echo "<label for='nume'>Client:&nbsp;</label>";
+                echo "<input type='text' required disabled name='nume' id='nume' value='".$row['nume']."'>";
+
+                echo "<br>";
+
+                echo "<label for='prenume'>Prenume:&nbsp;</label>";
+                echo "<input type='text' disabled name='prenume' id='prenume' value='".$row['prenume']."'>";
+
+                echo "<br>";
+
+                echo "<label for='directia'>Directia:&nbsp;</label>";
+                echo "<input type='text' disabled required name='directia' id='directia' value='".$row['directia']."'>";
+
+                echo "<br>";
+
+                echo "<label for='tel'>Telefon:&nbsp;</label>";
+                echo "<span id='number_prefix'>(+373)/0</span><input type='text' required disabled name='tel' id='tel' value='".$row['numar_tel']."'>";
+
+                echo "<br>";
+
+                echo "<label for='suma'>Suma:&nbsp;</label>";
+                echo "<input type='text' required disabled name='suma' id='suma' value='".$row['suma']."'>";
+
+                echo "<br>";
+
+                echo "<label for='comentariu'>Comentariu:&nbsp;</label>";
+                echo "<textarea class='form-control' required disabled name='comentariu' id='comentariu'>".$row['commentariu']."</textarea>";
+
+                echo "<br>";
+
+                echo "<label for='data'>Data:</label>";
+                echo "<input type='text' required disabled name='data' id='data' value='".$row['data']."'>";
+
+                echo "</form>";
+
+                echo "<hr id='form_separator'>";
+
+                echo "</div>";
+            }
+
+            ?>
 
         </div>
 

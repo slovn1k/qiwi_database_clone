@@ -227,6 +227,12 @@ input[type='radio'] {
 
 #lista_clienti {
     text-align: center;
+    color: orangered;
+}
+
+#lista_clienti_achitat {
+    text-align: center;
+    color: dodgerblue;
 }
 
 #searching_string {

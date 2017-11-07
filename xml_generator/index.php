@@ -113,7 +113,7 @@ if(isset($_GET) && !empty($_GET)){
                             if (sprintf("%01.2f", $_GET['sum']) === sprintf("%01.2f", $row['suma'])) {
                                 $date = substr($_GET['txn_date'], 0, 4) . '-' . substr($_GET['txn_date'], 4, 2) . '-' . substr($_GET['txn_date'], 6, 2) . ' ' .
                                     substr($_GET['txn_date'], 8, 2) . ':' . substr($_GET['txn_date'], 10, 2) . ':' . substr($_GET['txn_date'], 12, 2);
-                                $connection->query("UPDATE `client` SET `data` = '{$date}', `suma`=0.00 WHERE `id_client`='{$row['id_client']}'");
+                                $connection->query("UPDATE `client` SET `data` = '{$date}', `suma`=0.00, `commentariu`='Achitat' WHERE `id_client`='{$row['id_client']}'");
                                 $xml = '<?xml version="1.0" encoding="UTF-8"?>';
                                 $xml .= '<response>';
                                 $xml .= "<osmp_txn_id>{$_GET['txn_id']}</osmp_txn_id>";

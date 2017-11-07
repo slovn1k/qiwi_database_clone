@@ -20,19 +20,31 @@
 
     while ($row = $result_query->fetch_assoc()) {
         $nume = $row['nume'];
-        $nume_count = mysqli_num_rows($result_query);
 
         if(isset($_POST['searching_string'])) {
-            if($_POST['searching_string'] === $nume) {
-                echo "<div id='searching_result'>".$_POST['searching_string']."</div>";
-                break;
-            } else if($_POST['searching_string'] !== $nume) {
-                echo "<div id='searching_result'>Nu a fost gasit nici un client cu asa nume!!!</div>";
+            $searching_string = $_POST['searching_string'];
+        }
+        $nume_count = mysqli_num_rows($result_query);
+
+        if(isset($searching_string)) {
+            if(preg_match('/'.$searching_string.'/', $nume)) {
+                //echo "<div id='searching_result'>".$_POST['searching_string']."</div>";
+                echo "<div id='searching_result'>".$nume."</div>";
+            } else if(!preg_match('/'.$searching_string.'/', $nume)) {
+                //echo "<div id='searching_result'>Nu a fost gasit nici un client cu asa nume!!!</div>";
+                echo " ";
             }
 
         } else {
-            echo "<div id='searching_result'>Inroduceti secventa de cautare!!!</div>";
-            break;
+
+            if(isset($_POST['searching_string'])) {
+                $searching_string = $_POST['searching_string'];
+                if($searching_string === " ") {
+                    echo "<div id='searching_result'>Inroduceti secventa de cautare!!!</div>";
+                    break;
+                }
+            }
+
         }
 
     }
