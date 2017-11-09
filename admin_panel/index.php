@@ -7,9 +7,11 @@
     if(isset($_SESSION['user']) && isset($_SESSION['password'])) {
         $_POST['user'] = $_SESSION['user'];
         $_POST['password'] = $_SESSION['password'];
+        $password = md5($_POST['password']);
     } else {
         $_SESSION['user'] = $_POST['user'];
         $_SESSION['password'] = $_POST['password'];
+        $password = md5($_POST['password']);
     }
 
 ?>
@@ -29,9 +31,10 @@
 
             $user_query = 'SELECT *FROM users';
             $result = $connection->query($user_query);
+            $count = mysqli_num_rows($result);
 
             while ($row = $result->fetch_assoc()) {
-                if($_POST['user'] === $row['user'] && $_POST['password'] === $row['password']) {
+                if($_POST['user'] === $row['user'] && $password === $row['password']) {
                     break;
                 } else {
                     $sql = 'SELECT *FROM users';
@@ -41,10 +44,10 @@
 
                     if($row['id_user'] > $row_count || $row['id_user'] == $row_count) {
                         echo "<h1 id='login_error'>Ati introdus datele incorect</h1>";
-                        echo "<h1 id='login_error'>In timp de 3 secunde o sa fiti returnat pe pagina de logare</h1>";
+                        echo "<h1 id='login_error'>In timp de 5 secunde o sa fiti returnat pe pagina de logare</h1>";
                         session_unset();
                         session_destroy();
-                        header("refresh:3; url=../index.php");
+                        header("refresh:5; url=../index.php");
                         exit();
                     }
                 }
