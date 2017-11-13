@@ -63,62 +63,7 @@
 
         </div>
 
-        <div class="row justify-content-center">
-
-            <div class="col-auto">
-                <form name="delete_client" action="delete_client.php" method="post">
-
-                        <?php
-
-                        $delete = "SELECT *FROM client ORDER BY nume";
-                        $delete_result = $connection->query($delete);
-
-                        while ($row = $delete_result->fetch_assoc()) {
-                            echo "<div class='form-group'>";
-                            echo "<label for='id_client'>".$row['nume']."&nbsp;</label>";
-                            echo "<input type='radio' checked name='id_client' id='id_client' value='".$row['id_client']."'>";
-                            echo "</div>";
-                        }
-
-                        ?>
-
-                    <input type="submit" class="btn btn-outline-danger" id="deleting_button" value="Sterge client">
-
-                </form>
-            </div>
-
-        </div>
-
         <br>
-        <hr id="form_separator">
-
-        <div class="row justify-content-center">
-
-            <div class="col-auto">
-
-                <form name="update_client" action="update_client.php" method="post">
-
-                    <?php
-
-                        $update = "SELECT *FROM client ORDER BY nume";
-                        $update_query = $connection->query($update);
-
-                        while($update_row = $update_query->fetch_assoc()) {
-                            echo "<div class='form-group'>";
-                            echo "<label for='id_client'>".$update_row['nume']."&nbsp;</label>";
-                            echo "<input type='radio' checked name='id_client' id='id_client' value='".$update_row['id_client']."'>";
-                            echo "</div>";
-                        }
-
-                    ?>
-
-                    <input type="submit" class="btn btn-outline-primary" id="updating_button" value="Editeaza datele">
-
-                </form>
-
-            </div>
-
-        </div>
 
     </div>
 

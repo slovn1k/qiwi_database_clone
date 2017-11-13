@@ -63,43 +63,47 @@
                 $result = $connection->query($update);
                 $row = $result->fetch_assoc();
 
-                echo "<label for='id'>ID_Client&nbsp;</label>";
-                echo "<input type='text' name='id' id='id' value='".$row['id_client']."'>";
-                echo "<br>";
+                if($row['suma'] == 0) {
+                    echo "Acest client a relizat achitarea platii, este posibila doar stergerea lui!!!";
+                } else {
+                    echo "<label for='id'>ID_Client&nbsp;</label>";
+                    echo "<input type='text' name='id' id='id' value='".$row['id_client']."'>";
+                    echo "<br>";
 
-                echo "<label for='nume'>Nume&nbsp;</label>";
-                echo "<input type='text' name='nume' id='nume' value='".$row['nume']."'>";
-                echo "<br>";
+                    echo "<label for='nume'>Nume&nbsp;</label>";
+                    echo "<input type='text' name='nume' id='nume' value='".$row['nume']."'>";
+                    echo "<br>";
 
-                echo "<label for='prenume'>Prenume&nbsp;</label>";
-                echo "<input type='text' name='prenume' id='prenume' value='".$row['prenume']."'>";
-                echo "<br>";
+                    echo "<label for='prenume'>Prenume&nbsp;</label>";
+                    echo "<input type='text' name='prenume' id='prenume' value='".$row['prenume']."'>";
+                    echo "<br>";
 
-                echo "<label for='directia'>Directia&nbsp;</label>";
-                echo "<input type='text' name='directia' id='directia' value='".$row['directia']."'>";
-                echo "<br>";
+                    echo "<label for='directia'>Directia&nbsp;</label>";
+                    echo "<input type='text' name='directia' id='directia' value='".$row['directia']."'>";
+                    echo "<br>";
 
-                echo "<label for='tel'>Telefon&nbsp;</label>";
-                echo "<input type='text' name='tel' id='tel' value='".$row['numar_tel']."'>";
-                echo "<br>";
+                    echo "<label for='tel'>Telefon&nbsp;</label>";
+                    echo "<input type='text' name='tel' id='tel' value='".$row['numar_tel']."'>";
+                    echo "<br>";
 
-                echo "<label for='suma'>Suma&nbsp;</label>";
-                echo "<input type='text' name='suma' id='suma' value='".$row['suma']."'>";
-                echo "<br>";
+                    echo "<label for='suma'>Suma&nbsp;</label>";
+                    echo "<input type='text' name='suma' id='suma' value='".$row['suma']."'>";
+                    echo "<br>";
 
-                echo "<label for='comentariu'>Comentariu&nbsp;</label>";
-                echo "<textarea class='form-control' name='comentariu' id='comentariu'>".$row['commentariu']."</textarea>";
-                echo "<br>";
+                    echo "<label for='comentariu'>Comentariu&nbsp;</label>";
+                    echo "<textarea class='form-control' name='comentariu' id='comentariu'>".$row['commentariu']."</textarea>";
+                    echo "<br>";
 
-                echo "<label for='data'>Data&nbsp;</label>";
-                echo "<input type='datetime-local' name='data' id='data' value='".$row['data']."'>";
+                    echo "<label for='data'>Data&nbsp;</label>";
+                    echo "<input type='datetime-local' name='data' id='data' value='".$row['data']."'>";
 
+                    echo "<br><input type='submit' class='btn btn-outline-primary' value='Salveaza schimbarile'>";
+                }
 
                 ?>
 
                 <br>
 
-                <input type="submit" class="btn btn-outline-primary" value="Salveaza schimbarile">
             </form>
 
         </div>

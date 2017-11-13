@@ -246,3 +246,13 @@ input[type='radio'] {
 #searching_result {
     margin-bottom: 10px;
 }
+
+#id_client_check {
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+}
+
+.delete_client {
+    margin-top: 10px;
+}

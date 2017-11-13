@@ -90,12 +90,12 @@
 
                         <div class="form-group">
                             <label for="nume">Nume<span id="required"> *</span></label>
-                            <input type="text" name="nume" id="nume" class="form-control">
+                            <input type="text" pattern="[A-Za-z]{1,50}" title="Se permite de introdus doar litere" name="nume" id="nume" class="form-control">
                         </div>
 
                         <div class="form-group">
                             <label for="prenume">Preume</label>
-                            <input type="text" name="prenume" id="prenume" class="form-control">
+                            <input type="text" pattern="[A-Za-z]{1,50}" title="Se permite de introdus doar litere" name="prenume" id="prenume" class="form-control">
                         </div>
 
                         <div class="form-group">
@@ -112,7 +112,7 @@
 
                             <div class="input-group">
                                 <span class="input-group-addon">(+373)/0</span>
-                                <input type="text" name="tel" id="tel" maxlength="11" class="form-control">
+                                <input type="text" pattern="[0-9]{8,11}" title="Se permite de introdus doar cifre, min 8 si max 11" name="tel" id="tel" maxlength="11" class="form-control">
                             </div>
 
                         </div>
@@ -155,7 +155,15 @@
         $count = $count_result->fetch_assoc();
 
         ?>
-        <h4 id="lista_clienti">Lista Clienti(Spre Achitare)/Numarul de clienti TOTAL: <?php printf($count['c']); ?></h4>
+
+        <?php
+
+            $spre_achitare = "SELECT SUM(suma) as spre_achitare FROM client";
+            $spre_achitare_result = $connection->query($spre_achitare);
+            $spre_achitare_row = $spre_achitare_result->fetch_assoc();
+
+        ?>
+        <h4 id="lista_clienti">Lista Clienti(Spre Achitare = <?php printf($spre_achitare_row['spre_achitare']);?>)</h4>
 
         <div class="row justify-content-center">
 
@@ -219,13 +227,21 @@
 
         </div>
 
-        <h4 id="lista_clienti_achitat">Lista Clienti(Achitat)</h4>
+        <?php
+
+        $achitat = "SELECT SUM(suma) as suma_all FROM client_achitat";
+        $result2 = $connection->query($achitat);
+        $row2 = $result2->fetch_assoc();
+
+        ?>
+
+        <h4 id="lista_clienti_achitat">Lista Clienti(Achitat = <?php printf($row2['suma_all']); ?>)</h4>
 
         <div class="row justify-content-center">
 
             <?php
 
-            $query = "SELECT *FROM client WHERE client.commentariu = 'Achitat' ORDER BY nume";
+            $query = "SELECT *FROM client WHERE client.commentariu LIKE 'Achitat%' ORDER BY nume";
             $result = $connection->query($query);
 
             while ($row = $result->fetch_assoc()) {
