@@ -24,6 +24,13 @@
     text-decoration: underline;
 }
 
+#xml_generator_bpay {
+    padding-top: 12px;
+    color: cornflowerblue;
+    text-decoration: underline;
+    margin: 0;
+}
+
 #xml_generator a:visited {
     color: darkblue;
 }

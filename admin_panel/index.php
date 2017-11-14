@@ -67,6 +67,10 @@
                 Bine ati venit : <?php echo "<span id='admin_color'>".$_POST['user']."</span>";?><?php include "../access_functionality/xml_qiwi_generator.php";?>
             </div>
 
+            <div class="col-auto" id="admin_title">
+                <?php include "../access_functionality/xml_bpay_generator.php";?>
+            </div>
+
             <div class="col-auto">
                 <?php include "../access_functionality/balance.php";?>
             </div>
