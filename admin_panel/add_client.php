@@ -71,9 +71,11 @@
                         $commentariu = $_POST['comentariu'];
 
                         $add = "INSERT INTO client (nume, prenume, directia, numar_tel, suma, data, commentariu) VALUES ('".$nume."', '".$prenume."', '".$directia."', '".$tel."', '".$suma."', '".$data."', '".$commentariu."')";
+                        $add_bpay = "INSERT INTO client_bpay (nume, prenume, directia, numar_tel, suma, data, commentariu) VALUES ('".$nume."','".$prenume."','".$directia."','".$tel."','".$suma."','".$data."','".$commentariu."')";
                         $add_result = $connection->query($add);
+                        $add_bpay_result = $connection->query($add_bpay);
 
-                        if($add_result == true) {
+                        if($add_result == true || $add_bpay_result == true) {
                             echo "<p id='adding'>Adaugarea realizata cu succes!!!</p>";
                         } else {
                             echo "<p id='adding'>Erroare la adaugare!!!</p>".$connection->error;
