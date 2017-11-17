@@ -15,8 +15,6 @@
         $id_client = $_POST['id_client'];
     }
 
-
-
 ?>
 
 <!DOCTYPE html>

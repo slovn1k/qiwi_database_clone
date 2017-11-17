@@ -46,8 +46,9 @@ $pdf->Cell(30,10, 'Nume', 1, '0', 'C', true);
 $pdf->Cell(30,10, 'Prenume', 1, '0', 'C', true);
 $pdf->Cell(20,10, 'Directia', 1, '0', 'C', true);
 $pdf->Cell(22,10, 'Telefon', 1, '0', 'C', true);
-$pdf->Cell(60, 10, 'Comentariu', 1, '0', 'C', true);
+$pdf->Cell(35, 10, 'Comentariu', 1, '0', 'C', true);
 $pdf->Cell(35, 10, 'Data', 1, '0', 'C', true);
+$pdf->Cell(20,10, 'Modalitate', 1, '0', 'C', true);
 $pdf->ln();
 
 while($row = $pdf_result2->fetch_assoc()) {
@@ -55,8 +56,9 @@ while($row = $pdf_result2->fetch_assoc()) {
     $pdf->Cell(30,10, $row['prenume'], 1);
     $pdf->Cell(20,10, $row['directia'], 1);
     $pdf->Cell(22,10, $row['numar_tel'], 1);
-    $pdf->Cell(60,10, $row['commentariu'], 1);
+    $pdf->Cell(35,10, $row['commentariu'], 1);
     $pdf->Cell(35, 10, $row['data'], 1);
+    $pdf->Cell(20, 10, $row['sistema'], 1);
     $pdf->ln();
 }
 

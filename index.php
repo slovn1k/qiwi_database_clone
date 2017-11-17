@@ -70,8 +70,23 @@
                             <input type="password" name="password_reg" maxlength="20" id="password_reg" placeholder="parola" class="form-control">
                         </div>
 
-                        <br>
-                        <input type="submit" style="width: 100%; margin: 5px 0 5px 0;" class="btn btn-primary" value="Inregistreaza">
+                        <div class="form-group">
+                            <label>Privilegii</label>
+                            <select id="privilege" class="custom-select" style="width: 100%;">
+                                <?php
+
+                                    $query = "SELECT *FROM user_power ORDER BY id_power DESC";
+                                    $query_result = $connection->query($query);
+
+                                    do {
+                                        echo "<option selected id='power_name'>".$row['power_name']."</option>";
+                                    } while($row = $query_result->fetch_assoc());
+
+                                ?>
+                            </select>
+                        </div>
+
+                        <input type="submit" style="width: 100%; margin: 0px 0 5px 0;" class="btn btn-primary" value="Inregistreaza">
                         <input type="reset" style="width: 100%; margin: 0px 0 5px 0;" class="btn btn-light" value="Reseteaza">
                         <input type="reset" style="width: 100%;" class="btn btn-danger" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}if(document.getElementById('spoiler_2') .style.display=='none') {document.getElementById('spoiler_2') .style.display=''}else{document.getElementById('spoiler_2') .style.display='none'}" value="Ascunde forma de inregistrare">
 
@@ -82,6 +97,7 @@
                             if (isset($_POST['user_reg']) && isset($_POST['password_reg'])) {
                                 $user_reg = $_POST['user_reg'];
                                 $password_reg = md5($_POST['password_reg']);
+                                $user_power = $_POST['power_name'];
                                 $reg_user_query = "INSERT INTO users (user, password) VALUES ('".$user_reg."', '".$password_reg."')";
                                 $reg_user_result = $connection->query($reg_user_query);
 
@@ -89,7 +105,7 @@
                                     $message_fail = "Erroare la inserarea datelor" . $connection->error;
                                     echo "<script type='text/javascript'>alert('".$message_fail."');</script>";
                                 } else {
-                                    $message_success = "Inregistrarea a fost realizata cu success!!!";
+                                    $message_success = "Inregistrarea a fost realizata cu success!!!".$user_power;
                                     echo "<script type='text/javascript'>alert('".$message_success."');</script>";
                                 }
                             }

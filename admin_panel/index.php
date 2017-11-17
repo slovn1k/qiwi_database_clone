@@ -219,7 +219,7 @@
 
                         echo "<label for='data'>Data:</label>";
                         echo "<input type='text' required disabled name='data' id='data' value='".$row['data']."'>";
-                    
+
                         echo "</form>";
 
                         echo "<hr id='form_separator'>";
