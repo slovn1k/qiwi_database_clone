@@ -219,7 +219,7 @@
 
                         echo "<label for='data'>Data:</label>";
                         echo "<input type='text' required disabled name='data' id='data' value='".$row['data']."'>";
-
+                    
                         echo "</form>";
 
                         echo "<hr id='form_separator'>";
@@ -291,6 +291,11 @@
 
                 echo "<label for='data'>Data:</label>";
                 echo "<input type='text' required disabled name='data' id='data' value='".$row['data']."'>";
+
+                echo "<br>";
+
+                echo "<label for='sistema'>Modalitatea de achitare</label>";
+                echo "<input type='text' class='form-control' required disabled name='sistema' id='sistema' value='".$row['sistema']."'>";
 
                 echo "</form>";
 

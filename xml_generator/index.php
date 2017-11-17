@@ -15,16 +15,7 @@ $user = "root";
 $password = "";
 $database = "qiwi_user_database";
 $suma_achitat = 0.00;
-$a = $_GET['a'];
-$b = $_GET['b'];
-
-if($a !== "qiwi_user" || $b !== "5?XnB)xt") {
-    session_unset();
-    session_destroy();
-    header("refresh:0; url=index.html");
-    exit();
-} else {
-
+$identifier = "qiwi";
 
     if (isset($_GET) && !empty($_GET)) {
         switch (strtolower($_GET['command'])) {
@@ -36,7 +27,6 @@ if($a !== "qiwi_user" || $b !== "5?XnB)xt") {
                         if ($connection->connect_error) {
                             die("Erroarea la conexiune cu baza de date: " . $connection->connect_error);
                         }
-
 
                         $sql = "SELECT * FROM client WHERE numar_tel='{$_GET['account']}' AND `suma` > 0 LIMIT 0,1";
                         $res = $connection->query($sql);
@@ -138,7 +128,7 @@ if($a !== "qiwi_user" || $b !== "5?XnB)xt") {
                                 if (sprintf("%01.2f", $_GET['sum']) === sprintf("%01.2f", $row['suma'])) {
                                     $date = substr($_GET['txn_date'], 0, 4) . '-' . substr($_GET['txn_date'], 4, 2) . '-' . substr($_GET['txn_date'], 6, 2) . ' ' .
                                         substr($_GET['txn_date'], 8, 2) . ':' . substr($_GET['txn_date'], 10, 2) . ':' . substr($_GET['txn_date'], 12, 2);
-                                    $connection->query("UPDATE `client` SET `data` = '{$date}', `suma`=0.00, `commentariu`='Achitat={$row['suma']}' WHERE `id_client`='{$row['id_client']}'");
+                                    $connection->query("UPDATE `client` SET `data` = '{$date}', `suma`=0.00, `commentariu`='Achitat={$row['suma']}', `sistema` ='{$identifier}' WHERE `id_client`='{$row['id_client']}'");
                                     $suma_achitat += $row['suma'];
                                     $connection->query("INSERT INTO client_achitat (suma) VALUES ('{$suma_achitat}')");
                                     $xml = '<?xml version="1.0" encoding="UTF-8"?>';
@@ -224,7 +214,5 @@ if($a !== "qiwi_user" || $b !== "5?XnB)xt") {
         $xml .= '<comment>Пустые параметры запроса</comment>';
         $xml .= '</response>';
         echo $xml;
-    }
 }
-
 ?>
