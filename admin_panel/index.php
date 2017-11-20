@@ -173,7 +173,7 @@
 
                 <?php
 
-                $query = "SELECT *FROM client WHERE client.commentariu = 'Spre Achitare' ORDER BY nume";
+                $query = "SELECT *FROM client WHERE client.commentariu NOT LIKE 'Achitat%' ORDER BY nume";
                 $result = $connection->query($query);
 
                 while ($row = $result->fetch_assoc()) {

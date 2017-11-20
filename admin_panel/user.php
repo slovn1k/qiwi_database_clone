@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bune venit pe panela de administrare</title>
+    <title>Bun venit pe panela de administrare</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../style/style.css">
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
