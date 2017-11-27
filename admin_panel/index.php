@@ -192,7 +192,7 @@
 
                 while ($row = $result->fetch_assoc()) {
 
-                    echo "<div class='col-ld-3 col-sm-3'>";
+                    echo "<div class='col-auto'>";
 
                         echo "<form name='editing_client' action='delete_client.php' method='post'>";
 
@@ -264,7 +264,7 @@
 
             while ($row = $result->fetch_assoc()) {
 
-                echo "<div class='col-ld-3 col-sm-3'>";
+                echo "<div class='col-auto'>";
 
                 echo "<form name='editing_client' action='delete_client.php' method='post'>";
 

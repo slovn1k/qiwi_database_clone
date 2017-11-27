@@ -11,8 +11,9 @@
         $_SESSION['password'] = $_POST['password'];
     }
 
-    if(isset($_POST['id_client'])) {
+    if(isset($_POST['id_client']) || isset($_POST['numar_tel'])) {
         $id_client = $_POST['id_client'];
+        $numar_tel = $_POST['numar_tel'];
     }
 
 ?>
@@ -57,11 +58,13 @@
 
 
             <?php
-            if(isset($id_client)) {
-                $delete = "DELETE FROM client WHERE id_client='$id_client'";
+            if(isset($id_client) && isset($numar_tel)) {
+                $delete = "DELETE FROM client WHERE client.id_client='$id_client'";
+                $delete2 = "DELETE FROM client_bpay WHERE client_bpay.numar_tel='$numar_tel'";
                 $result = $connection->query($delete);
+                $result2 = $connection->query($delete2);
 
-                if($result == true) {
+                if($result == true || $result2 == true) {
                     echo "<p id='deleting'>Stergere realizata cu succes!!!</p>";
                 } else {
                     echo "<p id='deleting'>Erroare la stergere</p>";

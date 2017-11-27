@@ -17,7 +17,7 @@
 
     require "../db.php";
     $nume = "";
-    $query = "SELECT *FROM client";
+    $query = "SELECT client.id_client, client.nume, client.prenume, client.numar_tel, client.suma, client.commentariu, client.data, directia.denumire as directia FROM client INNER JOIN directia ON client.id_directia=directia.id_directia";
     $result_query = $connection->query($query);
 
     while ($row = $result_query->fetch_assoc()) {
@@ -46,7 +46,7 @@
                             echo "<div id='searching_result'>".$nume."</div>";
                             echo "<div id='searching_result'>".$prenume."</div>";
                             echo "<div id='searching_result'>".$directia."</div>";
-                            echo "<div id='searching_result'>".$numar_tel."</div>";
+                            echo "<input type='text' name='numar_tel' value='".$numar_tel."' id='searching_result'/><br>";
                             echo "<div id='searching_result'>".$suma."</div>";
                             echo "<div id='searching_result'>".$commentariu."</div>";
                             echo "<div id='searching_result'>".$data."</div>";

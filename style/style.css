@@ -252,6 +252,9 @@ input[type='radio'] {
 
 #searching_result {
     margin-bottom: 10px;
+    border: 0px;
+    width: auto;
+    width: 100%;
 }
 
 #id_client_check {

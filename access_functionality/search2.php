@@ -17,7 +17,7 @@
 
 require "../db.php";
 $nume = "";
-$query = "SELECT *FROM client";
+$query = "SELECT client.id_client, client.nume, client.prenume, client.numar_tel, client.suma, client.commentariu, client.data, directia.denumire as directia FROM client INNER JOIN directia ON client.id_directia=directia.id_directia";
 $result_query = $connection->query($query);
 
 while ($row = $result_query->fetch_assoc()) {
