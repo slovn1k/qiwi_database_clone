@@ -70,8 +70,8 @@
                         $data = $_POST['data'];
                         $commentariu = $_POST['comentariu'];
 
-                        $add = "INSERT INTO client (nume, prenume, directia, numar_tel, suma, data, commentariu) VALUES ('".$nume."', '".$prenume."', '".$directia."', '".$tel."', '".$suma."', '".$data."', '".$commentariu."')";
-                        $add_bpay = "INSERT INTO client_bpay (nume, prenume, directia, numar_tel, suma, data, commentariu) VALUES ('".$nume."','".$prenume."','".$directia."','".$tel."','".$suma."','".$data."','".$commentariu."')";
+                        $add = "INSERT INTO client (nume, prenume, id_directia, numar_tel, suma, data, commentariu) VALUES ('".$nume."', '".$prenume."', '".$directia."', '".$tel."', '".$suma."', '".$data."', '".$commentariu."')";
+                        $add_bpay = "INSERT INTO client_bpay (nume, prenume, id_directia, numar_tel, suma, data, commentariu) VALUES ('".$nume."','".$prenume."','".$directia."','".$tel."','".$suma."','".$data."','".$commentariu."')";
                         $add_result = $connection->query($add);
                         $add_bpay_result = $connection->query($add_bpay);
 

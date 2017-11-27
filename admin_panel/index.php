@@ -102,12 +102,26 @@
                             <input type="text" pattern="[A-Za-z]{1,50}" title="Se permite de introdus doar litere" name="prenume" id="prenume" class="form-control">
                         </div>
 
+
+                        <?php
+
+                            $directia = "SELECT *FROM directia";
+                            $directia_result = $connection->query($directia);
+
+                        ?>
                         <div class="form-group">
                             <label for="directia">Directia<span id="required"> *</span></label>
                             <select class="form-control" name="directia">
-                                <option selected name="Fotopanou" value="Fotopanou">Fotopanou</option>
-                                <option name="Ella" value="Ella">Ella</option>
-                                <option name="Avix" value="Avix">Avix</option>
+                                <?php
+
+                                    while ($directia_row = mysqli_fetch_assoc($directia_result)) {
+                                        echo "<option name='".$directia_row['denumire']."' value='".$directia_row['id_directia']."'>".$directia_row['denumire']."</option>";
+                                    }
+
+                                ?>
+<!--                                <option selected name="LigaRobotilor" value="Liga Robotilor">Liga Robotilor</option>-->
+<!--                                <option name="Ella" value="Ella">Ella</option>-->
+<!--                                <option name="Avix" value="Avix">Avix</option>-->
                             </select>
                         </div>
 
@@ -173,7 +187,7 @@
 
                 <?php
 
-                $query = "SELECT *FROM client WHERE client.commentariu NOT LIKE 'Achitat%' ORDER BY nume";
+                $query = "SELECT client.id_client, client.nume, client.prenume, directia.denumire as directia, client.numar_tel, client.suma, client.commentariu, client.data FROM client INNER JOIN directia ON client.id_directia=directia.id_directia WHERE client.commentariu NOT LIKE 'Achitat%' ORDER BY nume";
                 $result = $connection->query($query);
 
                 while ($row = $result->fetch_assoc()) {
@@ -245,7 +259,7 @@
 
             <?php
 
-            $query = "SELECT *FROM client WHERE client.commentariu LIKE 'Achitat%' ORDER BY nume";
+            $query = "SELECT client.id_client, client.nume, client.prenume, directia.denumire as directia, client.numar_tel, client.suma, client.commentariu, client.data, client.sistema FROM client INNER JOIN directia ON client.id_directia=directia.id_directia WHERE client.commentariu LIKE 'Achitat%' ORDER BY nume";
             $result = $connection->query($query);
 
             while ($row = $result->fetch_assoc()) {
