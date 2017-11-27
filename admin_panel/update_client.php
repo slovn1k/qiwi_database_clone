@@ -59,7 +59,7 @@
             <form name="udating_form" action="update.php" method="post">
                 <?php
 
-                $update = "SELECT *FROM client WHERE id_client=".$_POST['id_client'];
+                $update = "SELECT client.id_client, client.nume, client.prenume, directia.denumire as directia, client.numar_tel, client.suma, client.commentariu, client.data FROM client INNER JOIN directia ON client.id_directia=directia.id_directia WHERE id_client=".$_POST['id_client'];
                 $result = $connection->query($update);
                 $row = $result->fetch_assoc();
 
