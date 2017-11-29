@@ -34,7 +34,6 @@ $identifier = "qiwi";
                         if (isset($row) && !empty($row)) {
                             if ($_GET['sum'] === '10.00') {
                                 $xml = '<?xml version="1.0" encoding="UTF-8"?>';
-                                $xml .= '<responses>';
                                 $xml .= '<response>';
                                 $xml .= "<osmp_txn_id>{$_GET['txn_id']}</osmp_txn_id>";
                                 $xml .= "<prv_txn>{$row['id_client']}</prv_txn>";
@@ -46,12 +45,10 @@ $identifier = "qiwi";
                                 $xml .= '<field1 name="sum">' . sprintf("%01.2f", $row['suma']) . '</field1>';
                                 $xml .= '</fields>';
                                 $xml .= '</response>';
-                                $xml .= '</responses>';
                                 echo $xml;
                             } else {
                                 if (sprintf("%01.2f", $_GET['sum']) === sprintf("%01.2f", $row['suma'])) {
                                     $xml = '<?xml version="1.0" encoding="UTF-8"?>';
-                                    $xml .= '<responses>';
                                     $xml .= '<response>';
                                     $xml .= "<osmp_txn_id>{$_GET['txn_id']}</osmp_txn_id>";
                                     $xml .= "<prv_txn>{$row['id_client']}</prv_txn>";
@@ -63,7 +60,6 @@ $identifier = "qiwi";
                                     $xml .= '<field1 name="sum">' . sprintf("%01.2f", $row['suma']) . '</field1>';
                                     $xml .= '</fields>';
                                     $xml .= '</response>';
-                                    $xml .= '</responses>';
                                     echo $xml;
                                 } else {
                                     if ((double)sprintf("%01.2f", $_GET['sum']) > (double)sprintf("%01.2f", $row['suma'])) {
@@ -132,7 +128,6 @@ $identifier = "qiwi";
                                     $suma_achitat += $row['suma'];
                                     $connection->query("INSERT INTO client_achitat (suma) VALUES ('{$suma_achitat}')");
                                     $xml = '<?xml version="1.0" encoding="UTF-8"?>';
-                                    $xml .= '<responses>';
                                     $xml .= '<response>';
                                     $xml .= "<osmp_txn_id>{$_GET['txn_id']}</osmp_txn_id>";
                                     $xml .= "<prv_txn>{$row['id_client']}</prv_txn>";
@@ -144,7 +139,6 @@ $identifier = "qiwi";
                                     $xml .= "<field name='prv-date'>{$_GET['txn_date']}</field>";
                                     $xml .= '</fields>';
                                     $xml .= '</response>';
-                                    $xml .= '</responses>';
                                     echo $xml;
                                 } else {
                                     if ((double)sprintf("%01.2f", $_GET['sum']) > (double)sprintf("%01.2f", $row['suma'])) {

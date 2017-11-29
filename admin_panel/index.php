@@ -119,9 +119,6 @@
                                     }
 
                                 ?>
-<!--                                <option selected name="LigaRobotilor" value="Liga Robotilor">Liga Robotilor</option>-->
-<!--                                <option name="Ella" value="Ella">Ella</option>-->
-<!--                                <option name="Avix" value="Avix">Avix</option>-->
                             </select>
                         </div>
 
