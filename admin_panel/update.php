@@ -66,7 +66,9 @@
                 $comentariu = $_POST['comentariu'];
                 $data = $_POST['data'];
 
-                $update = "UPDATE client SET nume='$nume', prenume='$prenume', dqwirectia='$directia', numar_tel='$tel', suma='$suma', data='$data', commentariu='$comentariu' WHERE id_client='$id'";
+                echo $directia;
+
+                $update = "UPDATE client SET nume='$nume', prenume='$prenume', id_directia='$directia', numar_tel='$tel', suma='$suma', data='$data', commentariu='$comentariu' WHERE id_client='$id'";
                 $update_result = $connection->query($update);
 
                 if($update_result == true) {

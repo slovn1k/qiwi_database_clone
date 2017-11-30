@@ -78,8 +78,16 @@
                     echo "<input type='text' name='prenume' id='prenume' value='".$row['prenume']."'>";
                     echo "<br>";
 
+                    $directia = "SELECT *FROM directia";
+                    $result_directia = $connection->query($directia);
+
                     echo "<label for='directia'>Directia&nbsp;</label>";
-                    echo "<input type='text' name='directia' id='directia' value='".$row['directia']."'>";
+                    echo "<select id='directia' name='directia'>";
+                    while($row_directia = mysqli_fetch_assoc($result_directia)) {
+                        echo "<option name='".$row_directia['denumire']."' value='".$row_directia['id_directia']."'>".$row_directia['denumire']."</option>";
+                    }
+                    echo "</select>";
+//                    echo "<input type='text' name='directia' id='directia' value='".$row_directia['denumire']."'>";
                     echo "<br>";
 
                     echo "<label for='tel'>Telefon&nbsp;</label>";
