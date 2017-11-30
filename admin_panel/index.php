@@ -21,6 +21,7 @@
     <head>
         <title>Bune venit pe panela de administrare</title>
         <meta charset="utf-8">
+        <meta http-equiv="refresh" content="300">
         <link rel="stylesheet" type="text/css" href="../style/style.css">
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
         <script type="text/javascript" src="../jquery/jquery-3.2.1.min.js"></script>
