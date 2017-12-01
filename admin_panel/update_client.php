@@ -87,7 +87,6 @@
                         echo "<option name='".$row_directia['denumire']."' value='".$row_directia['id_directia']."'>".$row_directia['denumire']."</option>";
                     }
                     echo "</select>";
-//                    echo "<input type='text' name='directia' id='directia' value='".$row_directia['denumire']."'>";
                     echo "<br>";
 
                     echo "<label for='tel'>Telefon&nbsp;</label>";

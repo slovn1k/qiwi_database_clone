@@ -52,13 +52,29 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-lg-3" style="width: 310px; position: absolute; top: 50%; left: 50%; z-index: 15; margin: -150px 0 0 -150px;">
+            <div class="col-lg-6 col-sm-6" style="position: absolute; top: 30%; left: 38%; z-index: 15; margin: -150px 0 0 -150px;">
 
                 <div id="spoiler" style="display:none">
 
                     <h3 id="add_title">Forma de inregistrare</h3>
 
                     <form name="reg_user" action="index.php" method="post">
+
+                        <?php
+
+                            $user_count = "SELECT COUNT(id_user) as user_length FROM users";
+                            $user_count_result = $connection->query($user_count);
+                            $user_count_row = $user_count_result->fetch_assoc();
+
+                            echo "Numarul de utilizatori: ";
+                            printf($user_count_row['user_length']);
+
+                        ?>
+
+                        <div class="form-group">
+                            <label for="id_utilizator">Numarul unical al utilizatorului, mariti cu un punct cifra de sus...</label>
+                            <input type="text" name="id_utilizator" id="id_utilizator" class="form-control">
+                        </div>
 
                         <div class="form-group">
                             <label for="user">Introduceti User</label>
@@ -72,15 +88,15 @@
 
                         <div class="form-group">
                             <label>Privilegii</label>
-                            <select id="privilege" class="custom-select" style="width: 100%;">
+                            <select id="privilege" name="privilege" class="custom-select" style="width: 100%;">
                                 <?php
 
-                                    $query = "SELECT *FROM user_power ORDER BY id_power DESC";
+                                    $query = "SELECT *FROM user_power ORDER BY id_power ASC";
                                     $query_result = $connection->query($query);
 
-                                    do {
-                                        echo "<option selected id='power_name'>".$row['power_name']."</option>";
-                                    } while($row = $query_result->fetch_assoc());
+                                    while ($row = $query_result->fetch_assoc()) {
+                                        echo "<option name='".$row['nivel']."' value='".$row['id_power']."'>".$row['nivel']."</option>";
+                                    }
 
                                 ?>
                             </select>
@@ -95,17 +111,18 @@
                         <?php
 
                             if (isset($_POST['user_reg']) && isset($_POST['password_reg'])) {
+                                $id_utilizator = $_POST['id_utilizator'];
                                 $user_reg = $_POST['user_reg'];
                                 $password_reg = md5($_POST['password_reg']);
-                                $user_power = $_POST['power_name'];
-                                $reg_user_query = "INSERT INTO users (user, password) VALUES ('".$user_reg."', '".$password_reg."')";
+                                $privilege = $_POST['privilege'];
+                                $reg_user_query = "INSERT INTO users (id_user, user, password, id_power) VALUES ('".$id_utilizator."', '".$user_reg."', '".$password_reg."', '".$privilege."')";
                                 $reg_user_result = $connection->query($reg_user_query);
 
                                 if (!$reg_user_result) {
                                     $message_fail = "Erroare la inserarea datelor" . $connection->error;
                                     echo "<script type='text/javascript'>alert('".$message_fail."');</script>";
                                 } else {
-                                    $message_success = "Inregistrarea a fost realizata cu success!!!".$user_power;
+                                    $message_success = "Inregistrarea a fost realizata cu success!!!";
                                     echo "<script type='text/javascript'>alert('".$message_success."');</script>";
                                 }
                             }

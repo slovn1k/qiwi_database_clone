@@ -3,7 +3,7 @@
 include "../db.php";
 require('../fpdf/fpdf.php');
 
-$pdf_query = "SELECT client.nume, client.prenume, directia.denumire as directia, client.numar_tel, client.suma, client.commentariu, client.data FROM client INNER JOIN directia ON client.id_directia=directia.id_directia WHERE client.commentariu = 'Spre Achitare' ORDER BY nume";
+$pdf_query = "SELECT client.nume, client.prenume, directia.denumire as directia, client.numar_tel, client.suma, client.commentariu, client.data FROM client INNER JOIN directia ON client.id_directia=directia.id_directia WHERE client.commentariu NOT LIKE 'Achitat%' ORDER BY nume";
 $pdf_result = $connection->query($pdf_query);
 
 $pdf_query2 = "SELECT client.nume, client.prenume, directia.denumire as directia, client.numar_tel, client.suma, client.commentariu, client.data, client.sistema FROM client INNER JOIN directia ON client.id_directia=directia.id_directia WHERE client.commentariu LIKE 'Achitat%' ORDER BY nume";

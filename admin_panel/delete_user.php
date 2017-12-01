@@ -18,8 +18,6 @@
         $delete_user = $_POST['sterge'];
     } else if(isset($_POST['privilegii'])) {
         $user_power = $_POST['privilegii'];
-    } else {
-        $edit_user = $_POST['editeaza'];
     }
 
 ?>
@@ -73,15 +71,59 @@
                         $delete_result = $connection->query($delete_user);
 
                         if($delete_result == true) {
-                            echo "Stergerea realizata cu success!!!";
+                            echo "<p id='deleting'>Stergerea realizata cu success!!!</p>";
                         } else {
-                            echo "Erroare la stergere!".$connection->error;
+                            echo "<p id='deleting'>Erroare la stergere!</p>".$connection->error;
                         }
 
                     }
 
                 } else if(!empty($user_power)) {
-                    echo "Modifica utilizator";
+                    if(isset($_POST['id_user'])) {
+                        $id_user = $_POST['id_user'];
+                        $modify = "SELECT *FROM users WHERE id_user='$id_user'";
+                        $modify_result = $connection->query($modify);
+
+                        while($modify_row = mysqli_fetch_assoc($modify_result)){
+                            echo "<div class='row justify-content-center'>";
+                                echo "<div class='col-lg-5 col-sm-5'>";
+                                    echo "<form name='user_privilege' method='post' action='delete_user.php'>";
+                                    echo "<div class='form-group'>";
+                                        echo "<input type='text' hidden name='id_user' id='id_user' value='".$modify_row['id_user']."'>";
+                                    echo "</div>";
+                                    echo "<div class='form-group'>";
+                                        echo "<label for='user'>Utilizator</label>";
+                                        echo "<input type='text' class='form-control w-100' name='user' id='user' value='".$modify_row['user']."'>";
+                                    echo "</div>";
+                                    echo "<div class='form-group'>";
+                                        echo "<label for='power'>Permis</label>";
+                                        echo "<input type='text' class='form-control' name='power' id='power' value='".$modify_row['id_power']."'>";
+                                    echo "</div>";
+                                    echo "<br>";
+                                    echo "<div class='form-group'>";
+                                        echo "<button type='submit' class='btn btn-outline-primary w-100'>Permite</button>";
+                                    echo "</div>";
+                                    echo "</form>";
+                                echo "</div>";
+                            echo "</div>";
+                        }
+
+                        if(isset($_POST['id_power'])) {
+                            $id_user = $_POST['id_user'];
+                            $power = $_POST['id_power'];
+                            echo $id_user;
+                            echo $power;
+                            $change_permission = "UPDATE users SET id_power='$power' WHERE id_user='$id_user'";
+                            $change = $connection->query($change_permission);
+
+                            if($change == true) {
+                                echo "Schimbarile au fost realizate cu succes!!!";
+                            } else {
+                                echo "Erroare la schimbarile permiselor pentru utilizator".$connection->error;
+                            }
+                        }
+
+                    }
                 } else {
                     echo "Editeaza utilizaator";
                 }
