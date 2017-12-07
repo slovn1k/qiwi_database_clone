@@ -82,7 +82,7 @@
                     $result_directia = $connection->query($directia);
 
                     echo "<label for='directia'>Directia&nbsp;</label>";
-                    echo "<select id='directia' name='directia'>";
+                    echo "<select id='directia' name='directia' class='form-control'>";
                     while($row_directia = mysqli_fetch_assoc($result_directia)) {
                         echo "<option name='".$row_directia['denumire']."' value='".$row_directia['id_directia']."'>".$row_directia['denumire']."</option>";
                     }

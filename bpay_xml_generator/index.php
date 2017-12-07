@@ -120,7 +120,7 @@
                                   $date = substr($_GET['txn_date'], 0, 4) . '-' . substr($_GET['txn_date'], 4, 2) . '-' . substr($_GET['txn_date'], 6, 2) . ' ' . substr($_GET['txn_date'], 8, 2) . ':' . substr($_GET['txn_date'], 10, 2) . ':' . substr($_GET['txn_date'], 12, 2);
                                   $connection->query("UPDATE `client` SET `data` = '{$date}', `suma`=0.00, `commentariu`='Achitat={$row['suma']}', `sistema` = '{$identifier}' WHERE `id_client`='{$row['id_client']}'");
                                   $suma_achitat += $row['suma'];
-                                  $connection->query("INSERT INTO client_achitat (suma) VALUES ('{$suma_achitat}')");
+                                  $connection->query("INSERT INTO client_achitat_bpay (suma) VALUES ('{$suma_achitat}')");
                                   $xml = "<?xml version='1.0' encoding='UTF-8'?>";
                                   $xml .= "<response>";
                                   $xml .= "<osmp_txn_id>{$_GET['txn_id']}</osmp_txn_id>";
