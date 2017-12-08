@@ -209,4 +209,3 @@ $identifier = "qiwi";
         $xml .= '</response>';
         echo $xml;
 }
-?>

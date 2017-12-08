@@ -148,6 +148,11 @@
                             <input type="datetime-local" name="data" id="data" class="form-control">
                         </div>
 
+                        <div class="form-group">
+                            <label for="personal_id">Identificator personal</label>
+                            <input type="text" name="personal_id" id="personal_id" class="form-control">
+                        </div>
+
                         <br>
                         <p><input type="submit" style="width: 100%; margin: 5px 0 5px 0;" class="btn btn-outline-primary" value="Introduce"></p>
                         <br>
@@ -246,77 +251,147 @@
         <?php
 
         $achitat = "SELECT SUM(suma) as suma_all FROM client_achitat";
+        $achitat_bpay = "SELECT SUM(suma) as suma_bpay FROM client_achitat_bpay";
         $result2 = $connection->query($achitat);
+        $result_bpay = $connection->query($achitat_bpay);
         $row2 = $result2->fetch_assoc();
+        $row3 = $result_bpay->fetch_assoc();
 
         ?>
 
-        <h4 id="lista_clienti_achitat">Lista Clienti(Achitat = <?php printf($row2['suma_all']); ?>)</h4>
-
         <div class="row justify-content-center">
 
-            <?php
+            <div class="col-auto">
+                <h4 id="lista_clienti_achitat">Lista Clienti(Achitat QIWI = <?php printf($row2['suma_all']); ?>)</h4>
+                <?php
 
-            $query = "SELECT client.id_client, client.nume, client.prenume, directia.denumire as directia, client.numar_tel, client.suma, client.commentariu, client.data, client.sistema FROM client INNER JOIN directia ON client.id_directia=directia.id_directia WHERE client.commentariu LIKE 'Achitat%' ORDER BY nume";
-            $result = $connection->query($query);
+                $query = "SELECT client.id_client, client.nume, client.prenume, directia.denumire as directia, client.numar_tel, client.suma, client.commentariu, client.data, client.sistema FROM client INNER JOIN directia ON client.id_directia=directia.id_directia WHERE client.commentariu LIKE 'Achitat%' AND client.sistema LIKE 'qiwi' ORDER BY nume";
+                $result = $connection->query($query);
 
-            while ($row = $result->fetch_assoc()) {
+                while ($row = $result->fetch_assoc()) {
 
-                echo "<div class='col-auto'>";
+                    echo "<div class='col-auto'>";
 
-                echo "<form name='editing_client' action='delete_client.php' method='post'>";
+                    echo "<form name='editing_client' action='delete_client.php' method='post'>";
 
-                echo "<label hidden for='id'>ID_Personal:&nbsp;</label>";
-                echo "<input hidden type='text' disabled name='id' id='id' value='".$row['id_client']."'>";
+                    echo "<label hidden for='id'>ID_Personal:&nbsp;</label>";
+                    echo "<input hidden type='text' disabled name='id' id='id' value='".$row['id_client']."'>";
 
-                echo "<br>";
+                    echo "<br>";
 
-                echo "<label for='nume'>Client:&nbsp;</label>";
-                echo "<input type='text' required disabled name='nume' id='nume' value='".$row['nume']."'>";
+                    echo "<label for='nume'>Client:&nbsp;</label>";
+                    echo "<input type='text' required disabled name='nume' id='nume' value='".$row['nume']."'>";
 
-                echo "<br>";
+                    echo "<br>";
 
-                echo "<label for='prenume'>Prenume:&nbsp;</label>";
-                echo "<input type='text' disabled name='prenume' id='prenume' value='".$row['prenume']."'>";
+                    echo "<label for='prenume'>Prenume:&nbsp;</label>";
+                    echo "<input type='text' disabled name='prenume' id='prenume' value='".$row['prenume']."'>";
 
-                echo "<br>";
+                    echo "<br>";
 
-                echo "<label for='directia'>Directia:&nbsp;</label>";
-                echo "<input type='text' disabled required name='directia' id='directia' value='".$row['directia']."'>";
+                    echo "<label for='directia'>Directia:&nbsp;</label>";
+                    echo "<input type='text' disabled required name='directia' id='directia' value='".$row['directia']."'>";
 
-                echo "<br>";
+                    echo "<br>";
 
-                echo "<label for='tel'>Telefon:&nbsp;</label>";
-                echo "<span id='number_prefix'>(+373)/0</span><input type='text' required disabled name='tel' id='tel' value='".$row['numar_tel']."'>";
+                    echo "<label for='tel'>Telefon:&nbsp;</label>";
+                    echo "<span id='number_prefix'>(+373)/0</span><input type='text' required disabled name='tel' id='tel' value='".$row['numar_tel']."'>";
 
-                echo "<br>";
+                    echo "<br>";
 
-                echo "<label for='suma'>Suma:&nbsp;</label>";
-                echo "<input type='text' required disabled name='suma' id='suma' value='".$row['suma']."'>";
+                    echo "<label for='suma'>Suma:&nbsp;</label>";
+                    echo "<input type='text' required disabled name='suma' id='suma' value='".$row['suma']."'>";
 
-                echo "<br>";
+                    echo "<br>";
 
-                echo "<label for='comentariu'>Comentariu:&nbsp;</label>";
-                echo "<textarea class='form-control' required disabled name='comentariu' id='comentariu'>".$row['commentariu']."</textarea>";
+                    echo "<label for='comentariu'>Comentariu:&nbsp;</label>";
+                    echo "<textarea class='form-control' required disabled name='comentariu' id='comentariu'>".$row['commentariu']."</textarea>";
 
-                echo "<br>";
+                    echo "<br>";
 
-                echo "<label for='data'>Data:</label>";
-                echo "<input type='text' required disabled name='data' id='data' value='".$row['data']."'>";
+                    echo "<label for='data'>Data:</label>";
+                    echo "<input type='text' required disabled name='data' id='data' value='".$row['data']."'>";
 
-                echo "<br>";
+                    echo "<br>";
 
-                echo "<label for='sistema'>Modalitatea de achitare</label>";
-                echo "<input type='text' class='form-control' required disabled name='sistema' id='sistema' value='".$row['sistema']."'>";
+                    echo "<label for='sistema'>Modalitatea de achitare</label>";
+                    echo "<input type='text' class='form-control' required disabled name='sistema' id='sistema' value='".$row['sistema']."'>";
 
-                echo "</form>";
+                    echo "</form>";
 
-                echo "<hr id='form_separator'>";
+                    echo "<hr id='form_separator'>";
 
-                echo "</div>";
-            }
+                    echo "</div>";
+                }
 
-            ?>
+                ?>
+            </div>
+
+            <div class="col-auto">
+                <h4 id="lista_clienti_achitat">Lista Clienti(Achitat BPAY = <?php printf($row3['suma_bpay']); ?>)</h4>
+                <?php
+
+                $query2 = "SELECT client_bpay.id_client, client_bpay.nume, client_bpay.prenume, directia.denumire as directia, client_bpay.numar_tel, client_bpay.suma, client_bpay.commentariu, client_bpay.data, client_bpay.sistema FROM client_bpay INNER JOIN directia ON client_bpay.id_directia=directia.id_directia WHERE client_bpay.commentariu LIKE 'Achitat%' AND client_bpay.sistema LIKE 'bpay' ORDER BY nume";
+                $result2 = $connection->query($query2);
+
+                while ($row2 = $result2->fetch_assoc()) {
+
+                    echo "<div class='col-auto'>";
+
+                    echo "<form name='editing_client' action='delete_client.php' method='post'>";
+
+                    echo "<label hidden for='id'>ID_Personal:&nbsp;</label>";
+                    echo "<input hidden type='text' disabled name='id' id='id' value='".$row2['id_client']."'>";
+
+                    echo "<br>";
+
+                    echo "<label for='nume'>Client:&nbsp;</label>";
+                    echo "<input type='text' required disabled name='nume' id='nume' value='".$row2['nume']."'>";
+
+                    echo "<br>";
+
+                    echo "<label for='prenume'>Prenume:&nbsp;</label>";
+                    echo "<input type='text' disabled name='prenume' id='prenume' value='".$row2['prenume']."'>";
+
+                    echo "<br>";
+
+                    echo "<label for='directia'>Directia:&nbsp;</label>";
+                    echo "<input type='text' disabled required name='directia' id='directia' value='".$row2['directia']."'>";
+
+                    echo "<br>";
+
+                    echo "<label for='tel'>Telefon:&nbsp;</label>";
+                    echo "<span id='number_prefix'>(+373)/0</span><input type='text' required disabled name='tel' id='tel' value='".$row2['numar_tel']."'>";
+
+                    echo "<br>";
+
+                    echo "<label for='suma'>Suma:&nbsp;</label>";
+                    echo "<input type='text' required disabled name='suma' id='suma' value='".$row2['suma']."'>";
+
+                    echo "<br>";
+
+                    echo "<label for='comentariu'>Comentariu:&nbsp;</label>";
+                    echo "<textarea class='form-control' required disabled name='comentariu' id='comentariu'>".$row2['commentariu']."</textarea>";
+
+                    echo "<br>";
+
+                    echo "<label for='data'>Data:</label>";
+                    echo "<input type='text' required disabled name='data' id='data' value='".$row2['data']."'>";
+
+                    echo "<br>";
+
+                    echo "<label for='sistema'>Modalitatea de achitare</label>";
+                    echo "<input type='text' class='form-control' required disabled name='sistema' id='sistema' value='".$row2['sistema']."'>";
+
+                    echo "</form>";
+
+                    echo "<hr id='form_separator'>";
+
+                    echo "</div>";
+                }
+
+                ?>
+            </div>
 
         </div>
 

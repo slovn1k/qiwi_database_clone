@@ -6,4 +6,3 @@
         echo "<a href='../xml_generator/index.php' id='xml_generator'>Genereaza QIWI XML</a>";
     }
 
-?>

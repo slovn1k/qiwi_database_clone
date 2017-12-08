@@ -44,25 +44,6 @@
     background-color: #68707B;
 }
 
-.Main {
-    margin: auto;
-    float: right;
-    width: 85%;
-    min-width: 700px;
-    text-align: center;
-}
-
-.Menu {
-    /*float: left;*/
-    /*position: fixed;*/
-    /*width: 15%;*/
-    /*min-width: 150px;*/
-    /*height: 100%;*/
-    background-color: #0A1829;
-    margin-top: 0px;
-    /*text-align: center;*/
-}
-
 .Menu ul {
     list-style: none;
 }
@@ -90,21 +71,6 @@
     color: white;
 }
 
-.special_div {
-    display: inline-block;
-    margin-right: 10px;
-    border-radius: 5px 5px 5px 5px;
-    height: auto;
-    text-align: left;
-}
-
-.client_list {
-    border-radius: 5px 5px 5px 5px;
-    margin: 5px auto;
-    width: auto;
-    height: auto;
-}
-
 input {
     border: 0 black solid;
     color: white;
@@ -113,29 +79,11 @@ input {
     float: right;
 }
 
-.delete {
-    border-bottom: 1px #C82333 solid;
-}
-
 input:focus {
     outline-width: 0;
 }
 
-#reg_button {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-#reg_title {
-    text-align: center;
-}
-
-#user, #user_s, #user_t {
-    width: 75%;
-}
-
 #hr {
-    /*color: white;*/
     display: block;
     height: 1px;
     border: 0;
@@ -154,12 +102,7 @@ input:focus {
 }
 
 #exit_button {
-    /*margin-left: 10px;*/
     margin-top: 5px;
-}
-
-#left_menu {
-    width: 100%;
 }
 
 .menu_items {
@@ -170,10 +113,6 @@ input:focus {
 .menu_items li {
     display: inline-block;
     padding-right: 20px;
-}
-
-#right_menu {
-    float: right;
 }
 
 #separator {
@@ -252,15 +191,8 @@ input[type='radio'] {
 
 #searching_result {
     margin-bottom: 10px;
-    border: 0px;
-    width: auto;
+    border: 0;
     width: 100%;
-}
-
-#id_client_check {
-    width: 25px;
-    height: 25px;
-    margin-top: 5px;
 }
 
 .delete_client {
@@ -275,15 +207,3 @@ input[type='radio'] {
     margin-right: 10px;
 }
 
-#user_avatar {
-    width: 50px;
-    height: 50px;
-    margin-right: 5px;
-}
-
-#id_user {
-
-    margin-top: 10px;
-    width: 30px;
-    height: 30px;
-}

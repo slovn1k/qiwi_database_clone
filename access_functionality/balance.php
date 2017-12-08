@@ -12,4 +12,3 @@
         print_r("<p id='sold'>Soldul contului: ".$final_suma."</p>");
     }
 
-?>

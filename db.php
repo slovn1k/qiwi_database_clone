@@ -11,4 +11,4 @@
         die('Erroare la conectare cu baza de date'.$connection->connect_error);
     }
 
-?>
+

@@ -64,4 +64,3 @@ while($row = $pdf_result2->fetch_assoc()) {
 
 $pdf->Output();
 
-?>

@@ -102,8 +102,8 @@
                             </select>
                         </div>
 
-                        <input type="submit" style="width: 100%; margin: 0px 0 5px 0;" class="btn btn-primary" value="Inregistreaza">
-                        <input type="reset" style="width: 100%; margin: 0px 0 5px 0;" class="btn btn-light" value="Reseteaza">
+                        <input type="submit" style="width: 100%; margin: 0 0 5px 0;" class="btn btn-primary" value="Inregistreaza">
+                        <input type="reset" style="width: 100%; margin: 0 0 5px 0;" class="btn btn-light" value="Reseteaza">
                         <input type="reset" style="width: 100%;" class="btn btn-danger" onclick="if(document.getElementById('spoiler') .style.display=='none') {document.getElementById('spoiler') .style.display=''}else{document.getElementById('spoiler') .style.display='none'}if(document.getElementById('spoiler_2') .style.display=='none') {document.getElementById('spoiler_2') .style.display=''}else{document.getElementById('spoiler_2') .style.display='none'}" value="Ascunde forma de inregistrare">
 
                     </form>

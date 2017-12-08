@@ -31,7 +31,7 @@
                           die("Erroare la conectare cu baza de date" . $connection->error);
                       }
 
-                      $sql = "SELECT *FROM client WHERE numar_tel='{$_GET['account']}' AND `suma` > 0 LIMIT 0,1";
+                      $sql = "SELECT *FROM client_bpay WHERE numar_tel='{$_GET['account']}' AND `suma` > 0 LIMIT 0,1";
                       $result = $connection->query($sql);
                       $row = $result->fetch_assoc();
                       if (isset($row) && !empty($row)) {
@@ -44,6 +44,9 @@
                               $xml .= "<ammount>".sprintf('%01.2f', $_GET['sum'])."</ammount>";
                               $xml .= "<result>000</result>";
                               $xml .= "<comment>OK</comment>";
+                              $xml .= '<fields>';
+                              $xml .= '<field1 name="sum">' . sprintf("%01.2f", $row['suma']) . '</field1>';
+                              $xml .= '</fields>';
                               $xml .= "</response>";
                               echo $xml;
 
@@ -58,6 +61,9 @@
                                   $xml .= "<ammount>".sprintf('%01.2f', $_GET['sum'])."</ammount>";
                                   $xml .= "<result>000</result>";
                                   $xml .= "<comment>OK</comment>";
+                                  $xml .= '<fields>';
+                                  $xml .= '<field1 name="sum">' . sprintf("%01.2f", $row['suma']) . '</field1>';
+                                  $xml .= '</fields>';
                                   $xml .= "</response>";
                                   echo $xml;
 
@@ -111,14 +117,14 @@
                               die("Erroare la conectarea cu baza de date: " . $connection->connect_error);
                           }
 
-                          $sql = "SELECT *FROM client WHERE numar_tel='{$_GET['account']}' AND `suma` > 0 LIMIT 0,1";
+                          $sql = "SELECT *FROM client_bpay WHERE numar_tel='{$_GET['account']}' AND `suma` > 0 LIMIT 0,1";
                           $res = $connection->query($sql);
                           $row = $res->fetch_assoc();
 
                           if (isset($row) && !empty($row)) {
                               if (sprintf("%01.2f", $_GET['sum']) === sprintf("%01.2f", $row['suma'])) {
                                   $date = substr($_GET['txn_date'], 0, 4) . '-' . substr($_GET['txn_date'], 4, 2) . '-' . substr($_GET['txn_date'], 6, 2) . ' ' . substr($_GET['txn_date'], 8, 2) . ':' . substr($_GET['txn_date'], 10, 2) . ':' . substr($_GET['txn_date'], 12, 2);
-                                  $connection->query("UPDATE `client` SET `data` = '{$date}', `suma`=0.00, `commentariu`='Achitat={$row['suma']}', `sistema` = '{$identifier}' WHERE `id_client`='{$row['id_client']}'");
+                                  $connection->query("UPDATE `client_bpay` SET `data` = '{$date}', `suma`=0.00, `commentariu`='Achitat={$row['suma']}', `sistema` = '{$identifier}' WHERE `id_client`='{$row['id_client']}'");
                                   $suma_achitat += $row['suma'];
                                   $connection->query("INSERT INTO client_achitat_bpay (suma) VALUES ('{$suma_achitat}')");
                                   $xml = "<?xml version='1.0' encoding='UTF-8'?>";
@@ -128,6 +134,9 @@
                                   $xml .= "<ammount>" . sprintf("%01.2f", $_GET['sum']) . "</ammount>";
                                   $xml .= "<result>000</result>";
                                   $xml .= "<comment>OK</comment>";
+                                  $xml .= '<fields>';
+                                  $xml .= "<field name='prv-date'>{$_GET['txn_date']}</field>";
+                                  $xml .= '</fields>';
                                   $xml .= "</response>";
                                   echo $xml;
                               } else {
@@ -200,5 +209,3 @@
         $xml .= '</response>';
         echo $xml;
 }
-
-?>

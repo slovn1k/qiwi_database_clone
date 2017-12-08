@@ -69,13 +69,16 @@
                         $suma = trim($_POST['suma']);
                         $data = $_POST['data'];
                         $commentariu = $_POST['comentariu'];
+                        $personal_id = $_POST['personal_id'];
 
-                        $add = "INSERT INTO client (nume, prenume, id_directia, numar_tel, suma, data, commentariu) VALUES ('".$nume."', '".$prenume."', '".$directia."', '".$tel."', '".$suma."', '".$data."', '".$commentariu."')";
-                        $add_bpay = "INSERT INTO client_bpay (nume, prenume, id_directia, numar_tel, suma, data, commentariu) VALUES ('".$nume."','".$prenume."','".$directia."','".$tel."','".$suma."','".$data."','".$commentariu."')";
+                        $add = "INSERT INTO client (nume, prenume, id_directia, numar_tel, suma, data, commentariu, personal_id) VALUES ('".$nume."', '".$prenume."', '".$directia."', '".$tel."', '".$suma."', '".$data."', '".$commentariu."', '".$personal_id."')";
+                        $add_bpay = "INSERT INTO client_bpay (nume, prenume, id_directia, numar_tel, suma, data, commentariu, personal_id) VALUES ('".$nume."','".$prenume."','".$directia."','".$tel."','".$suma."','".$data."','".$commentariu."', '".$personal_id."')";
+                        $add_auto = "INSERT INTO personal_id (id) VALUES ('".$personal_id."')";
                         $add_result = $connection->query($add);
                         $add_bpay_result = $connection->query($add_bpay);
+                        $add_auto_result = $connection->query($add_auto);
 
-                        if($add_result == true || $add_bpay_result == true) {
+                        if($add_result == true || $add_bpay_result == true || $add_auto_result == true) {
                             echo "<p id='adding'>Adaugarea realizata cu succes!!!</p>";
                         } else {
                             echo "<p id='adding'>Erroare la adaugare!!!</p>".$connection->error;

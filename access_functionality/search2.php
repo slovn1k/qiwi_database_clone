@@ -41,7 +41,7 @@ while ($row = $result_query->fetch_assoc()) {
             echo "<div class='col-auto'>";
             echo "<form action='../admin_panel/update_client.php' method='post' name='update_client' class='update_client' style='margin-top: 10px;'>";
 
-            echo "<input type='checkbox' name='id_client' id='id_client_check' value='".$id_client."'>";
+            echo "<input type='checkbox' name='id_client' value='".$id_client."'>";
 
             echo "<div id='searching_result'>".$nume."</div>";
             echo "<div id='searching_result'>".$prenume."</div>";
